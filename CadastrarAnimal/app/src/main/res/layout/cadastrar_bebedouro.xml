@@ -4,31 +4,42 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.example.animal.activity.CadastrarAnimalActivity">
+    tools:context="com.example.bebedouro.activity.CadastrarBebedouroActivity">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical">
 
-        <TextView
-            android:id="@+id/txanimal"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="ANIMAL:" />
 
-        <EditText
-            android:id="@+id/edtAnimal"
-            android:layout_width="match_parent"
+        <RadioGroup
+            android:id="@+id/groupRadio"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:ems="10"
-            android:inputType="textPersonName" />
+            android:orientation="horizontal"
+            >
+
+            <RadioButton
+                android:id="@+id/rbCircular"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="BEBEDOURO CIRCULAR"
+                android:checked="true" />
+
+            <RadioButton
+                android:id="@+id/rbRetangular"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="BEBEDOURO RETANGULAR" />
+        </RadioGroup>
 
         <TextView
-            android:id="@+id/txtComprimento"
+            android:id="@+id/txtRaio"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="QUANTIDADE:" />
+            android:text="RAIO" />
 
         <EditText
             android:id="@+id/edtRaio"
@@ -37,24 +48,18 @@
             android:ems="10"
             android:inputType="number" />
 
-        <RadioGroup
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content">
+        <TextView
+            android:id="@+id/txtComprimento"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="COMPRIMENTO" />
 
-            <RadioButton
-                android:id="@+id/rbCircular"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="PLANÍCIE" />
-
-            <RadioButton
-                android:id="@+id/rbRetangular"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="PLANALTO" />
-        </RadioGroup>
+        <EditText
+            android:id="@+id/edtComprimento"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:inputType="number" />
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -66,14 +71,6 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="SALVAR" />
-
-            <Button
-                android:id="@+id/btVoltar"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-
-                android:text="VOLTAR" />
-
 
 
         </LinearLayout>

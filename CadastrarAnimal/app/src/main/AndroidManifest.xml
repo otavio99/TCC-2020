@@ -18,6 +18,8 @@
         </activity>
         <activity android:name="com.example.animal.activity.CadastrarAnimalActivity">
         </activity>
+        <activity android:name="com.example.bebedouro.activity.CadastrarBebedouroActivity">
+        </activity>
     </application>
 
 </manifest>

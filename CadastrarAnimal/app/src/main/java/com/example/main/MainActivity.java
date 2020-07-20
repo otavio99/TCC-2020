@@ -5,7 +5,9 @@ import android.database.Cursor;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
@@ -14,6 +16,7 @@ import android.widget.ListView;
 import com.example.animal.activity.CadastrarAnimalActivity;
 import com.example.animal.dao.CadastrarAnimal;
 import com.example.animal.dao.ListarAnimais;
+import com.example.bebedouro.activity.CadastrarBebedouroActivity;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -52,6 +55,8 @@ public class MainActivity extends AppCompatActivity {
 
         //instanciando uma listView para ser conectada a lista da activity main
         ListView listaView = (ListView) findViewById(R.id.lista);
+        listaView.setOnItemClickListener(this::onItemClick);
+
         //adapter necessário para passar a forma de que será adionado o conteúdo como a seguir, em simple_list_item_1
         //possui dados de um  text view e também é passado a lista de resultados que possui os objetos cadastrados
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, resultados );
@@ -68,8 +73,21 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-}
+    public void onItemClick(AdapterView<?> l, View v, int position, long id) {
+        Intent intent = new Intent();
+        intent.setClass(this, CadastrarBebedouroActivity.class);
+        intent.putExtra("position", position);
+        // Or / And
+        intent.putExtra("id", id);
+        startActivity(intent);
+    }
 
+    //TODO: FAZER O CLICK FUNCIONAR RAIO/COMPRIMENTO
+    //TODO: FAZER CADA ITEM DA LISTA SER CLICÁVEL
+    //TODO: LISTAR OS BEBEDOUROS E NESSA TELA MOSTRAR UM BOTÃO CADASTRO
+    //TODO: PLANÍCIE E PLANALTO ACTIVITY MAIN
+    //TODO: FAZENDA
+}
 
 
 

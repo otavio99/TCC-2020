@@ -26,7 +26,7 @@ public class CadastrarAnimalActivity extends AppCompatActivity {
         salvar.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 EditText nomeedt = (EditText) findViewById(R.id.edtAnimal);
-                EditText quantidadeedt = (EditText) findViewById(R.id.edtQuantidade);
+                EditText quantidadeedt = (EditText) findViewById(R.id.edtRaio);
                 new CadastrarAnimal().cadastrarAnimais(getApplicationContext(), nomeedt, quantidadeedt);
 
             }
