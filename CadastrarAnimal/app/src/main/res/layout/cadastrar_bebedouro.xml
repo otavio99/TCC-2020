@@ -61,6 +61,49 @@
             android:ems="10"
             android:inputType="number" />
 
+        <TextView
+            android:id="@+id/txtAltura"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="ALTURA" />
+
+        <EditText
+            android:id="@+id/edtAltura"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:inputType="number" />
+        <TextView
+            android:id="@+id/txtVazao"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="VAZÃO" />
+
+        <EditText
+            android:id="@+id/edtVazao"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:inputType="number" />
+        <TextView
+            android:id="@+id/txtLargura"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="LARGURA" />
+
+        <EditText
+            android:id="@+id/edtLargura"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:inputType="number" />
+
+        <Spinner
+            android:id="@+id/spinner1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@android:drawable/btn_dropdown"
+            android:spinnerMode="dropdown"/>
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
