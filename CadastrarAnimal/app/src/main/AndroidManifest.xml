@@ -20,6 +20,8 @@
         </activity>
         <activity android:name="com.example.bebedouro.activity.CadastrarBebedouroActivity">
         </activity>
+        <activity android:name="com.example.fazenda.activity.CadastrarFazendaActivity">
+        </activity>
     </application>
 
 </manifest>
