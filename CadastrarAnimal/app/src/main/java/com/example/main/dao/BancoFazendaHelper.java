@@ -5,6 +5,7 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
 import com.example.animal.dao.AnimalContract;
+import com.example.fazenda.dao.FazendaContract;
 
 public class BancoFazendaHelper extends SQLiteOpenHelper  {
 
@@ -12,14 +13,21 @@ public class BancoFazendaHelper extends SQLiteOpenHelper  {
     public static final int DATABASE_VERSION = 1;
     public static final String DATABASE_NAME = "BancoAnimais.db";
 
+    //MUDAR ENTRIES PARA ANIMAL
     private static final String SQL_CREATE_ENTRIES =
             "CREATE TABLE " + AnimalContract.AnimalEntry.TABLE_NOME+ " (" +
                     AnimalContract.AnimalEntry._ID + " INTEGER PRIMARY KEY," +
                     AnimalContract.AnimalEntry.COLUMN_NOME + " TEXT,"+
                     AnimalContract.AnimalEntry.COLUMN_QUANTIDADE+" INTEGER)";
 
+    private static final String SQL_CREATE_FAZENDA=
+            "CREATE TABLE " + FazendaContract.FazendaEntry.TABLE_NOME+ " (" +
+                    FazendaContract.FazendaEntry._ID + " INTEGER PRIMARY KEY," +
+                    FazendaContract.FazendaEntry.COLUMN_NOME + " TEXT)";
+
+
     private static final String SQL_DELETE_ENTRIES =
-            "DROP TABLE IF EXISTS " + AnimalContract.AnimalEntry.TABLE_NOME;
+            "DROP TABLE IF EXISTS " + FazendaContract.FazendaEntry.TABLE_NOME;
 
     //construtor da classe
     public BancoFazendaHelper(Context context) {
@@ -29,6 +37,7 @@ public class BancoFazendaHelper extends SQLiteOpenHelper  {
     // ESTA CLASSE NAO ESTAVA CONSEGUINDO VER O COMANDO SQL_CREATE DO CRIARBANCO POR ESTAR PRIVATE, MUDEI E DEU!?
     public void onCreate(SQLiteDatabase db) {
         db.execSQL(SQL_CREATE_ENTRIES);
+            db.execSQL(SQL_CREATE_FAZENDA);
     }
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
 

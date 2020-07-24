@@ -6,7 +6,7 @@ import android.database.sqlite.SQLiteDatabase;
 
 import com.example.main.dao.BancoFazendaHelper;
 
-public class ListarFazenda {
+public class ListarFazendas {
 
     public Cursor listar(Context contexto){
 
@@ -15,7 +15,7 @@ public class ListarFazenda {
         SQLiteDatabase db = dbHelper.getWritableDatabase();
 
         //consulta para retornar os dados da tabela
-        String sql = "SELECT * from " + FazendaContract.AnimalEntry.TABLE_NOME;
+        String sql = "SELECT * from " + FazendaContract.FazendaEntry.TABLE_NOME;
         SQLiteDatabase db2 = dbHelper.getReadableDatabase();
         Cursor cursor = db2.rawQuery(sql, null);
 

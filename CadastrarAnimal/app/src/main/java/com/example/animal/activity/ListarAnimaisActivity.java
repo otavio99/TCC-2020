@@ -1,27 +1,24 @@
-package com.example.main;
+package com.example.animal.activity;
 
 import android.content.Intent;
 import android.database.Cursor;
+import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
-import android.widget.Button;
-import android.widget.EditText;
 import android.widget.ListView;
 
-import com.example.fazenda.activity.CadastrarFazendaActivity;
-import com.example.fazenda.dao.ListarFazendas;
+import com.example.animal.activity.CadastrarAnimalActivity;
+import com.example.animal.dao.ListarAnimais;
+import com.example.bebedouro.activity.CadastrarBebedouroActivity;
+import com.example.main.R;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import static android.provider.AlarmClock.EXTRA_MESSAGE;
-
-public class MainActivity extends AppCompatActivity {
+public class ListarAnimaisActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,8 +27,8 @@ public class MainActivity extends AppCompatActivity {
 
         //Condição para mudar a tela, caso não haja conteúdo cadastrado na lista
         //vai abrir o cadastrar se não vai para a tela do listar.
-        Intent intent = new Intent(this, CadastrarFazendaActivity.class);
-        if (new ListarFazendas().listar(this).getCount() <= 0) {
+        Intent intent = new Intent(this, CadastrarAnimalActivity.class);
+        if (new ListarAnimais().listar(this).getCount() <= 0) {
 
             startActivity(intent);
 
@@ -41,13 +38,14 @@ public class MainActivity extends AppCompatActivity {
         List<String> resultados = new ArrayList();
 
         //cursor sendo criado para auxiliar ao percorrer a lista de animais
-        Cursor cursor =  new ListarFazendas().listar(this);
+        Cursor cursor =  new ListarAnimais().listar(this);
 
         //aqui percorremos o conteúdo de cursor, que no caso possui a consulta retornada pelo listar
         while (cursor.moveToNext()) {
             // atribuindo para as variáveis os parametros correpondentes para serem adicionados na lista resultad
             String nome = cursor.getString(cursor.getColumnIndex("nome"));
-            resultados.add( "Nome: "+ nome);
+            int quantidade = Integer.parseInt(cursor.getString(cursor.getColumnIndex("quantidade")));
+            resultados.add( "Nome: "+ nome +" Quantidade: " + quantidade );
         }
 
         //instanciando uma listView para ser conectada a lista da activity main
@@ -70,21 +68,18 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-
     public void onItemClick(AdapterView<?> l, View v, int position, long id) {
         Intent intent = new Intent();
-        intent.setClass(this, CadastrarFazendaActivity.class);
+        intent.setClass(this, CadastrarBebedouroActivity.class);
         intent.putExtra("position", position);
         // Or / And
         intent.putExtra("id", id);
         startActivity(intent);
     }
 
-
-    //TODO: RELACIONAMENTO DOS ANIMAIS E DOS BEBEDOUROS COM A FAZENDA
-    //TODO: CALCULAR A DISPONIBILIDADE DE ÁGUA DOS BEBEDOUROS
+    //TODO: PRIMEIRO LISTAR E CADASTRAR A APARECER DEVE SER O DA FAZENDA
+    //TODO: LISTAR OS BEBEDOUROS E NESSA TELA MOSTRAR UM BOTÃO CADASTRO
     //TODO: PLANÍCIE E PLANALTO ACTIVITY MAIN
-    //TODO: CALCULAR A NECESSIDADE TOTAL DE ÁGUA PARA OS ANIMAIS
 
 }
 

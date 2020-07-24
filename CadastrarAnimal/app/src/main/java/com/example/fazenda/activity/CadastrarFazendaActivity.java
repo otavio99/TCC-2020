@@ -8,6 +8,7 @@ import android.widget.Button;
 import android.widget.EditText;
 
 import com.example.animal.dao.CadastrarAnimal;
+import com.example.fazenda.dao.CadastrarFazenda;
 import com.example.main.MainActivity;
 import com.example.main.R;
 
@@ -16,29 +17,21 @@ public class CadastrarFazendaActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.cadastrar_animal);
+        setContentView(R.layout.cadastrar_fazenda);
 
 
         String nome="";
-        int quantidade=0;
+
 
         Button salvar= (Button) findViewById(R.id.btSalvar);
         salvar.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                EditText nomeedt = (EditText) findViewById(R.id.edtAnimal);
-                EditText quantidadeedt = (EditText) findViewById(R.id.edtRaio);
-                new CadastrarAnimal().cadastrarAnimais(getApplicationContext(), nomeedt, quantidadeedt);
+                EditText nomeedt = (EditText) findViewById(R.id.edtFazenda);
+                new CadastrarFazenda().cadastrarFazendas(getApplicationContext(), nomeedt);
 
             }
         });
 
-        Intent intent = new Intent(this, MainActivity.class);
-        Button voltar= (Button) findViewById(R.id.btVoltar);
-        voltar.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
-                startActivity(intent);
-            }
-        });
 
 
 
