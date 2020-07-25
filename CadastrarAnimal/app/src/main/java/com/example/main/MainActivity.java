@@ -13,6 +13,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
 
+import com.example.animal.activity.ListarAnimaisActivity;
 import com.example.fazenda.activity.CadastrarFazendaActivity;
 import com.example.fazenda.dao.ListarFazendas;
 
@@ -73,7 +74,7 @@ public class MainActivity extends AppCompatActivity {
 
     public void onItemClick(AdapterView<?> l, View v, int position, long id) {
         Intent intent = new Intent();
-        intent.setClass(this, CadastrarFazendaActivity.class);
+        intent.setClass(this, ListarAnimaisActivity.class);
         intent.putExtra("position", position);
         // Or / And
         intent.putExtra("id", id);
@@ -81,8 +82,12 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
+
+
     //TODO: RELACIONAMENTO DOS ANIMAIS E DOS BEBEDOUROS COM A FAZENDA
+
     //TODO: CALCULAR A DISPONIBILIDADE DE ÁGUA DOS BEBEDOUROS
+    //TODO: BEBEDOURO NÃO ESTÁ LISTANDO, CONFERIR!
     //TODO: PLANÍCIE E PLANALTO ACTIVITY MAIN
     //TODO: CALCULAR A NECESSIDADE TOTAL DE ÁGUA PARA OS ANIMAIS
 
