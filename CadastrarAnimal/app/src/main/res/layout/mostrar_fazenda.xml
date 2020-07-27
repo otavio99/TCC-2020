@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.example.fazenda.activity.MostrarFazendaActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/txNome"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="TextView" />
+
+        <TextView
+            android:id="@+id/txId"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="TextView" />
+
+        <Button
+            android:id="@+id/btAnimal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="IR PARA ANIMAL" />
+
+        <Button
+            android:id="@+id/btBebedouro"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="IR PARA BEBEDOURO" />
+    </LinearLayout>
+
+</android.support.constraint.ConstraintLayout>

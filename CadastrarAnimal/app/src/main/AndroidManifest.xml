@@ -24,6 +24,8 @@
         </activity>
         <activity android:name="com.example.animal.activity.ListarAnimaisActivity">
         </activity>
+        <activity android:name="com.example.fazenda.activity.MostrarFazendaActivity">
+        </activity>
     </application>
 
 </manifest>

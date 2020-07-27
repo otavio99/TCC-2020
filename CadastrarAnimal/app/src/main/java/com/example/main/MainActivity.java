@@ -15,6 +15,7 @@ import android.widget.ListView;
 
 import com.example.animal.activity.ListarAnimaisActivity;
 import com.example.fazenda.activity.CadastrarFazendaActivity;
+import com.example.fazenda.activity.MostrarFazendaActivity;
 import com.example.fazenda.dao.ListarFazendas;
 
 import java.util.ArrayList;
@@ -74,7 +75,7 @@ public class MainActivity extends AppCompatActivity {
 
     public void onItemClick(AdapterView<?> l, View v, int position, long id) {
         Intent intent = new Intent();
-        intent.setClass(this, ListarAnimaisActivity.class);
+        intent.setClass(this, MostrarFazendaActivity.class);
         intent.putExtra("position", position);
         // Or / And
         intent.putExtra("id", id);
@@ -84,7 +85,9 @@ public class MainActivity extends AppCompatActivity {
 
 
 
+    // TODO: ARRUMAR O MOSTRAR FAZENDA ACTIVITY FAZER FUNCIONAR O CADASTRAR DO BEBEDOURO E LISTAR
     //TODO: RELACIONAMENTO DOS ANIMAIS E DOS BEBEDOUROS COM A FAZENDA
+        //TODO: Mandar um dado para a proxima janela
 
     //TODO: CALCULAR A DISPONIBILIDADE DE ÁGUA DOS BEBEDOUROS
     //TODO: BEBEDOURO NÃO ESTÁ LISTANDO, CONFERIR!

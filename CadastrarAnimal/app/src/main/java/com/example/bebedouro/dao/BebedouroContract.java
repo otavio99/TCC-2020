@@ -1,4 +1,4 @@
-package com.example.bebedouro;
+package com.example.bebedouro.dao;
 
 import android.provider.BaseColumns;
 
