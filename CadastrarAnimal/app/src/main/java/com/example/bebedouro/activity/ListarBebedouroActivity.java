@@ -72,9 +72,7 @@ public class ListarBebedouroActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
-    //TODO: PRIMEIRO LISTAR E CADASTRAR A APARECER DEVE SER O DA FAZENDA
-    //TODO: LISTAR OS BEBEDOUROS E NESSA TELA MOSTRAR UM BOTÃO CADASTRO
-    //TODO: PLANÍCIE E PLANALTO ACTIVITY MAIN
+
 
 }
 

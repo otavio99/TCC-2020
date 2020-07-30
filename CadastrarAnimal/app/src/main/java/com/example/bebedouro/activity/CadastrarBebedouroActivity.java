@@ -37,6 +37,7 @@ public class CadastrarBebedouroActivity extends AppCompatActivity implements Ada
         findViewById(R.id.txtLargura).setVisibility(View.GONE);
 
 
+
         //get the spinner from the xml.
                 Spinner dropdown = findViewById(R.id.spinner1);
         //create a list of items for the spinner.
@@ -57,6 +58,15 @@ public class CadastrarBebedouroActivity extends AppCompatActivity implements Ada
             }
         });
 
+        Button salvar= (Button) findViewById(R.id.btSalvar);
+        salvar.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                EditText nomeedt = (EditText) findViewById(R.id.edtAnimal);
+                EditText quantidadeedt = (EditText) findViewById(R.id.edtRaio);
+                new CadastrarAnimal().cadastrarAnimais(getApplicationContext(), nomeedt, quantidadeedt);
+
+            }
+        });
 
 
     }
