@@ -32,7 +32,7 @@ public class MostrarFazendaActivity extends AppCompatActivity {
             }
         });
 
-        Button btcaminho2= (Button) findViewById(R.id.btAnimal);
+      /*  Button btcaminho2= (Button) findViewById(R.id.btAnimal);
         Context contexto2 = getApplicationContext();
         btcaminho2.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
@@ -41,7 +41,7 @@ public class MostrarFazendaActivity extends AppCompatActivity {
                 intent.putExtra("id", 0);
                 startActivity(intent);
             }
-        });
+        });*/
 
 
 

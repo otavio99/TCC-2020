@@ -5,6 +5,9 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
 import com.example.animal.dao.AnimalContract;
+import com.example.bebedouro.dao.BebedouroCircularContract;
+import com.example.bebedouro.dao.BebedouroContract;
+import com.example.bebedouro.dao.BebedouroRetangularContract;
 import com.example.fazenda.dao.FazendaContract;
 
 public class BancoFazendaHelper extends SQLiteOpenHelper  {
@@ -25,6 +28,25 @@ public class BancoFazendaHelper extends SQLiteOpenHelper  {
                     FazendaContract.FazendaEntry._ID + " INTEGER PRIMARY KEY," +
                     FazendaContract.FazendaEntry.COLUMN_NOME + " TEXT)";
 
+    private static final String SQL_CREATE_BEBEDOURO=
+            "CREATE TABLE " + BebedouroContract.BebedouroEstrutura.TABLE_NOME+ " (" +
+                    BebedouroContract.BebedouroEstrutura._ID + " INTEGER PRIMARY KEY," +
+                    BebedouroContract.BebedouroEstrutura.COLUMN_ALTURA + " TEXT,"+
+                    BebedouroContract.BebedouroEstrutura.COLUMN_CONDICAOACESSO+" TEXT,"+
+                    BebedouroContract.BebedouroEstrutura.COLUMN_LIMPEZA+" TEXT"+")";
+
+    private static final String SQL_CREATE_BEBEDOUROCIRCULAR=
+            "CREATE TABLE " + BebedouroCircularContract.BebedouroEstruturaCircular.TABLE_NOME+ " (" +
+                    BebedouroCircularContract.BebedouroEstruturaCircular._ID + " INTEGER PRIMARY KEY," +
+                    BebedouroCircularContract.BebedouroEstruturaCircular.COLUMN_RAIO+ " TEXT,"+
+                    BebedouroCircularContract.BebedouroEstruturaCircular.COLUMN_VAZAO+" TEXT)";
+
+    private static final String SQL_CREATE_BEBEDOURORETANGULAR=
+            "CREATE TABLE " + BebedouroRetangularContract.BebedouroEstruturaRetangular.TABLE_NOME+ " (" +
+                    BebedouroRetangularContract.BebedouroEstruturaRetangular._ID + " INTEGER PRIMARY KEY," +
+                    BebedouroRetangularContract.BebedouroEstruturaRetangular.COLUMN_COMPRIMENTO+ " TEXT,"+
+                    BebedouroRetangularContract.BebedouroEstruturaRetangular.COLUMN_LARGURA+" TEXT)";
+
 
     private static final String SQL_DELETE_ENTRIES =
             "DROP TABLE IF EXISTS " + FazendaContract.FazendaEntry.TABLE_NOME;
@@ -37,7 +59,11 @@ public class BancoFazendaHelper extends SQLiteOpenHelper  {
     // ESTA CLASSE NAO ESTAVA CONSEGUINDO VER O COMANDO SQL_CREATE DO CRIARBANCO POR ESTAR PRIVATE, MUDEI E DEU!?
     public void onCreate(SQLiteDatabase db) {
         db.execSQL(SQL_CREATE_ENTRIES);
-            db.execSQL(SQL_CREATE_FAZENDA);
+        db.execSQL(SQL_CREATE_FAZENDA);
+        db.execSQL(SQL_CREATE_BEBEDOURO);
+        db.execSQL(SQL_CREATE_BEBEDOUROCIRCULAR);
+        db.execSQL(SQL_CREATE_BEBEDOURORETANGULAR);
+
     }
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
 
