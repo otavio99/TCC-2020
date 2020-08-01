@@ -9,6 +9,7 @@ public final class BebedouroRetangularContract {
         public static final String TABLE_NOME = "bebedouro_retangular";
         public static final String COLUMN_COMPRIMENTO = "comprimento";
         public static final String COLUMN_LARGURA = "largura";
+        public static final String COLUMN_ID_BEBEDOURO = "id_bebedouro";
 
         /* public static final String COLUMN_NAME_SUBTITLE = "subtitle";*/
     }

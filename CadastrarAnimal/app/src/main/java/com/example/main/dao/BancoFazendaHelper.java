@@ -45,11 +45,15 @@ public class BancoFazendaHelper extends SQLiteOpenHelper  {
                      BebedouroContract.BebedouroEstrutura._ID
                      );
 
-    private static final String SQL_CREATE_BEBEDOURORETANGULAR=
-            "CREATE TABLE " + BebedouroRetangularContract.BebedouroEstruturaRetangular.TABLE_NOME+ " (" +
-                    BebedouroRetangularContract.BebedouroEstruturaRetangular._ID + " INTEGER PRIMARY KEY," +
-                    BebedouroRetangularContract.BebedouroEstruturaRetangular.COLUMN_COMPRIMENTO+ " TEXT,"+
-                    BebedouroRetangularContract.BebedouroEstruturaRetangular.COLUMN_LARGURA+" TEXT)";
+
+    private static final String SQL_CREATE_BEBEDOURORETANGULAR= String.format("CREATE TABLE %s(%s INTEGER PRIMARY KEY,%s TEXT, %s TEXT, %s integer references %s(%s))",BebedouroRetangularContract.BebedouroEstruturaRetangular.TABLE_NOME,
+                    BebedouroRetangularContract.BebedouroEstruturaRetangular._ID,
+                    BebedouroRetangularContract.BebedouroEstruturaRetangular.COLUMN_COMPRIMENTO,
+                    BebedouroRetangularContract.BebedouroEstruturaRetangular.COLUMN_LARGURA,
+                    BebedouroRetangularContract.BebedouroEstruturaRetangular.COLUMN_ID_BEBEDOURO,
+                    BebedouroContract.BebedouroEstrutura.TABLE_NOME,
+                    BebedouroContract.BebedouroEstrutura._ID
+                    );
 
 
     private static final String SQL_DELETE_ENTRIES =
