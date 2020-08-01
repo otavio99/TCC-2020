@@ -9,6 +9,7 @@ public final class BebedouroCircularContract {
         public static final String TABLE_NOME = "bebedouro_circular";
         public static final String COLUMN_RAIO = "raio";
         public static final String COLUMN_VAZAO = "vazao";
+        public static final String COLUMN_ID_BEBEDOURO = "id_bebedouro";
 
         /* public static final String COLUMN_NAME_SUBTITLE = "subtitle";*/
     }

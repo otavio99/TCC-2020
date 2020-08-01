@@ -11,6 +11,7 @@ public final class BebedouroContract {
         public static final String COLUMN_LIMPEZA = "limpeza";
         public static final String COLUMN_CONDICAOACESSO= "condincaoAcesso";
 
+
         /* public static final String COLUMN_NAME_SUBTITLE = "subtitle";*/
     }
 

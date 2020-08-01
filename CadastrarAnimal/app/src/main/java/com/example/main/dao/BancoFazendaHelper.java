@@ -35,11 +35,15 @@ public class BancoFazendaHelper extends SQLiteOpenHelper  {
                     BebedouroContract.BebedouroEstrutura.COLUMN_CONDICAOACESSO+" TEXT,"+
                     BebedouroContract.BebedouroEstrutura.COLUMN_LIMPEZA+" TEXT"+")";
 
-    private static final String SQL_CREATE_BEBEDOUROCIRCULAR=
-            "CREATE TABLE " + BebedouroCircularContract.BebedouroEstruturaCircular.TABLE_NOME+ " (" +
-                    BebedouroCircularContract.BebedouroEstruturaCircular._ID + " INTEGER PRIMARY KEY," +
-                    BebedouroCircularContract.BebedouroEstruturaCircular.COLUMN_RAIO+ " TEXT,"+
-                    BebedouroCircularContract.BebedouroEstruturaCircular.COLUMN_VAZAO+" TEXT)";
+
+    private static final String SQL_CREATE_BEBEDOUROCIRCULAR= String.format("CREATE TABLE %s (%s INTEGER PRIMARY KEY, %s TEXT, %s TEXT, %s integer references %s(%s))", BebedouroCircularContract.BebedouroEstruturaCircular.TABLE_NOME,
+                     BebedouroCircularContract.BebedouroEstruturaCircular._ID,
+                     BebedouroCircularContract.BebedouroEstruturaCircular.COLUMN_RAIO,
+                     BebedouroCircularContract.BebedouroEstruturaCircular.COLUMN_VAZAO,
+                     BebedouroCircularContract.BebedouroEstruturaCircular.COLUMN_ID_BEBEDOURO,
+                     BebedouroContract.BebedouroEstrutura.TABLE_NOME,
+                     BebedouroContract.BebedouroEstrutura._ID
+                     );
 
     private static final String SQL_CREATE_BEBEDOURORETANGULAR=
             "CREATE TABLE " + BebedouroRetangularContract.BebedouroEstruturaRetangular.TABLE_NOME+ " (" +
