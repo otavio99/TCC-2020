@@ -11,21 +11,26 @@ import com.example.main.dao.BancoFazendaHelper;
 public class CadastrarBebedouroCircular {
 
 
-    public void cadastrarBebedouro(Context contexto, EditText raioedt, EditText vazaoedt) {
+    public void cadastrarBebedouroCircular(Context contexto, EditText raio, EditText vazao,) {
         BancoFazendaHelper dbHelper = new BancoFazendaHelper(contexto.getApplicationContext());
-
+        //o objeto helper retorna um objeto de acesso ao banco sqlite
         SQLiteDatabase db = dbHelper.getWritableDatabase();
 
-
+        //um objeto que serve para armazenar um nome de um campo e o valor a ser inserido nele
         ContentValues values = new ContentValues();
-        values.put(BebedouroCircularContract.BebedouroEstruturaCircular.COLUMN_RAIO, raioedt.getText().toString());
+        values.put(AnimalContract.AnimalEntry.COLUMN_NOME, nomeedt.getText().toString());
+        int qtd = Integer.parseInt(quantidadeedt.getText().toString());
 
-        int qtd = Integer.parseInt(vazaoedt.getText().toString());
-        values.put(BebedouroCircularContract.BebedouroEstruturaCircular.COLUMN_VAZAO, qtd);
+        //o put funcionando como um set armazenando em um objeto até agora
+        values.put(AnimalContract.AnimalEntry.COLUMN_QUANTIDADE, qtd);
+
+        // values.put(AnimalEntry.COLUMN_NAME_SUBTITLE, subtitle);
 
 
-        long newRowId = db.insert(BebedouroCircularContract.BebedouroEstruturaCircular.TABLE_NOME, null, values);
+        // e nesta linha aqui em baixo eu adiciono uma linha de dados no banco
+        long newRowId = db.insert(AnimalContract.AnimalEntry.TABLE_NOME, null, values);
     }
+
 
 }
 
