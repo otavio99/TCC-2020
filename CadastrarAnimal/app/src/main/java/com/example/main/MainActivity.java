@@ -17,6 +17,7 @@ import com.example.animal.activity.ListarAnimaisActivity;
 import com.example.fazenda.activity.CadastrarFazendaActivity;
 import com.example.fazenda.activity.MostrarFazendaActivity;
 import com.example.fazenda.dao.ListarFazendas;
+import com.example.main.dao.ObjectBox;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -29,6 +30,8 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        ObjectBox.init(this);
 
         //Condição para mudar a tela, caso não haja conteúdo cadastrado na lista
         //vai abrir o cadastrar se não vai para a tela do listar.

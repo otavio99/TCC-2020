@@ -11,12 +11,18 @@ import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
 import com.example.animal.activity.CadastrarAnimalActivity;
+import com.example.animal.dao.Animal;
 import com.example.animal.dao.ListarAnimais;
+import com.example.animal.dao.MyObjectBox;
 import com.example.bebedouro.activity.CadastrarBebedouroActivity;
 import com.example.main.R;
+import com.example.main.dao.ObjectBox;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import io.objectbox.Box;
+import io.objectbox.BoxStore;
 
 public class ListarAnimaisActivity extends AppCompatActivity {
 
@@ -25,27 +31,19 @@ public class ListarAnimaisActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.listar_animal);
 
+        BoxStore  boxStore = ObjectBox.get();
+
+        Box<Animal> animalBox = boxStore.boxFor(Animal.class);
+
+        List<Animal> animaisLista = animalBox.getAll();
+
         //Condição para mudar a tela, caso não haja conteúdo cadastrado na lista
         //vai abrir o cadastrar se não vai para a tela do listar.
         Intent intent = new Intent(this, CadastrarAnimalActivity.class);
-        if (new ListarAnimais().listar(this).getCount() <= 0) {
+        if (animaisLista.size() <= 0) {
 
             startActivity(intent);
 
-        }
-
-        //criando uma lista para ser utilizada mais pra frente para adicionar os objetos do tipo animal
-        List<String> resultados = new ArrayList();
-
-        //cursor sendo criado para auxiliar ao percorrer a lista de animais
-        Cursor cursor =  new ListarAnimais().listar(this);
-
-        //aqui percorremos o conteúdo de cursor, que no caso possui a consulta retornada pelo listar
-        while (cursor.moveToNext()) {
-            // atribuindo para as variáveis os parametros correpondentes para serem adicionados na lista resultad
-            String nome = cursor.getString(cursor.getColumnIndex("nome"));
-            int quantidade = Integer.parseInt(cursor.getString(cursor.getColumnIndex("quantidade")));
-            resultados.add( "Nome: "+ nome +" Quantidade: " + quantidade );
         }
 
         //instanciando uma listView para ser conectada a lista da activity main
@@ -54,10 +52,10 @@ public class ListarAnimaisActivity extends AppCompatActivity {
 
         //adapter necessário para passar a forma de que será adionado o conteúdo como a seguir, em simple_list_item_1
         //possui dados de um  text view e também é passado a lista de resultados que possui os objetos cadastrados
-        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, resultados );
+        ArrayAdapter<Animal> adapter = new ArrayAdapter<Animal>(this, android.R.layout.simple_list_item_1, animaisLista );
         // listView setando o adapter que será demonstrado na tela
         listaView.setAdapter(adapter);
-        cursor.close();
+
 
         FloatingActionButton cadastrar= (FloatingActionButton) findViewById(R.id.btCadastrar);
         cadastrar.setOnClickListener(new View.OnClickListener() {
