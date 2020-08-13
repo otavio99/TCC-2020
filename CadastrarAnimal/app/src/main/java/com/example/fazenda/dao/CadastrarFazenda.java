@@ -5,8 +5,6 @@ import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.widget.EditText;
 
-import com.example.main.dao.BancoFazendaHelper;
-
 public class CadastrarFazenda {
 
 

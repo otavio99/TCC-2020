@@ -4,8 +4,6 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 
-import com.example.main.dao.BancoFazendaHelper;
-
 public class ListarFazendas {
 
     public Cursor listar(Context contexto){

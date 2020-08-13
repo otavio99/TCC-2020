@@ -1,7 +1,5 @@
 package com.example.bebedouro.activity;
 
-import android.content.Context;
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
@@ -11,10 +9,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.RadioGroup;
 import android.widget.Spinner;
-import android.widget.Toast;
 
-import com.example.animal.dao.CadastrarAnimal;
-import com.example.main.MainActivity;
 import com.example.main.R;
 
 public class CadastrarBebedouroActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener{
@@ -61,10 +56,7 @@ public class CadastrarBebedouroActivity extends AppCompatActivity implements Ada
         Button salvar= (Button) findViewById(R.id.btSalvar);
         salvar.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                EditText nomeedt = (EditText) findViewById(R.id.edtAnimal);
-                EditText quantidadeedt = (EditText) findViewById(R.id.edtRaio);
-                new CadastrarAnimal().cadastrarAnimais(getApplicationContext(), nomeedt, quantidadeedt);
-
+               
             }
         });
 

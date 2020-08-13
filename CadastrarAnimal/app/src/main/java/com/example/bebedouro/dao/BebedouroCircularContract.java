@@ -11,7 +11,7 @@ public final class BebedouroCircularContract {
         public static final String COLUMN_VAZAO = "vazao";
         public static final String COLUMN_ID_BEBEDOURO = "id_bebedouro";
 
-        /* public static final String COLUMN_NAME_SUBTITLE = "subtitle";*/
+
     }
 
 

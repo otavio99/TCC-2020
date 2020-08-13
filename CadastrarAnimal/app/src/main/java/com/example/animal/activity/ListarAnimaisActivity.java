@@ -1,7 +1,6 @@
 package com.example.animal.activity;
 
 import android.content.Intent;
-import android.database.Cursor;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
@@ -10,15 +9,11 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
-import com.example.animal.activity.CadastrarAnimalActivity;
 import com.example.animal.dao.Animal;
-import com.example.animal.dao.ListarAnimais;
-import com.example.animal.dao.MyObjectBox;
 import com.example.bebedouro.activity.CadastrarBebedouroActivity;
 import com.example.main.R;
 import com.example.main.dao.ObjectBox;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import io.objectbox.Box;

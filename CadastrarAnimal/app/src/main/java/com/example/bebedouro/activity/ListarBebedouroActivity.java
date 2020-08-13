@@ -10,9 +10,6 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
-import com.example.animal.activity.CadastrarAnimalActivity;
-import com.example.animal.dao.ListarAnimais;
-import com.example.bebedouro.dao.ListarBebedouros;
 import com.example.main.R;
 
 import java.util.ArrayList;
@@ -27,7 +24,7 @@ public class ListarBebedouroActivity extends AppCompatActivity {
 
 
         Intent intent = new Intent(this, CadastrarBebedouroActivity.class);
-        if (new ListarBebedouros().listar(this).getCount() <= 0) {
+        if (0 <= 0) {
 
             startActivity(intent);
 
@@ -36,14 +33,10 @@ public class ListarBebedouroActivity extends AppCompatActivity {
         List<String> resultados = new ArrayList();
 
 
-        Cursor cursor =  new ListarBebedouros().listar(this);
 
 
-        while (cursor.moveToNext()) {
-            String nome = cursor.getString(cursor.getColumnIndex("nome"));
-            int quantidade = Integer.parseInt(cursor.getString(cursor.getColumnIndex("quantidade")));
-            resultados.add( "Nome: "+ nome +" Quantidade: " + quantidade );
-        }
+
+
 
         ListView listaView = (ListView) findViewById(R.id.lista);
         listaView.setOnItemClickListener(this::onItemClick);
@@ -52,7 +45,6 @@ public class ListarBebedouroActivity extends AppCompatActivity {
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, resultados );
 
         listaView.setAdapter(adapter);
-        cursor.close();
 
         FloatingActionButton cadastrar= (FloatingActionButton) findViewById(R.id.btCadastrar);
         cadastrar.setOnClickListener(new View.OnClickListener() {

@@ -8,8 +8,6 @@ import android.widget.Button;
 import android.widget.EditText;
 
 import com.example.animal.dao.Animal;
-import com.example.animal.dao.CadastrarAnimal;
-import com.example.animal.dao.MyObjectBox;
 import com.example.main.MainActivity;
 import com.example.main.R;
 import com.example.main.dao.ObjectBox;
@@ -21,12 +19,16 @@ public class CadastrarAnimalActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        //inicializar a tela
         super.onCreate(savedInstanceState);
         setContentView(R.layout.cadastrar_animal);
         String nome="";
         int quantidade=0;
 
+
         BoxStore  boxStore = ObjectBox.get();
+
+        //animal box está funcionando para receber o animal da classe
         Box<Animal> animalBox = boxStore.boxFor(Animal.class);
 
 
@@ -37,6 +39,7 @@ public class CadastrarAnimalActivity extends AppCompatActivity {
                 EditText quantidadeedt = (EditText) findViewById(R.id.edtRaio);
 
                 Animal animal = new Animal(nomeedt.getText().toString(), Integer.parseInt(quantidadeedt.getText().toString()));
+               //animalbox está sendo usado como objeto de inserção
                 animalBox.put(animal);
 
             }
