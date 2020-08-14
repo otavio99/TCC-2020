@@ -10,10 +10,20 @@ import android.widget.EditText;
 import android.widget.RadioGroup;
 import android.widget.Spinner;
 
+import com.example.animal.dao.Animal;
+import com.example.bebedouro.dao.Bebedouro;
+import com.example.bebedouro.dao.BebedouroCircular;
+import com.example.bebedouro.dao.BebedouroRetangular;
 import com.example.main.R;
+import com.example.main.dao.ObjectBox;
+
+import io.objectbox.Box;
+import io.objectbox.BoxStore;
+import io.objectbox.relation.RelationInfo;
+import io.objectbox.relation.ToOne;
 
 public class CadastrarBebedouroActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener{
-
+     private int checked;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -33,14 +43,15 @@ public class CadastrarBebedouroActivity extends AppCompatActivity implements Ada
 
 
 
-        //get the spinner from the xml.
-                Spinner dropdown = findViewById(R.id.spinner1);
-        //create a list of items for the spinner.
-                String[] items = new String[]{"BOM", "RUIM", "ÓTIMO"};
-        //create an adapter to describe how the items are displayed, adapters are used in several places in android.
-        //There are multiple variations of this, but this is the basic variant.
-                ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_dropdown_item, items);
-        //set the spinners adapter to the previously created one.
+        Spinner dropdown = findViewById(R.id.spinner1);
+        String[] items = new String[]{"BOM", "RUIM", "ÓTIMO"};
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_dropdown_item, items);
+        dropdown.setAdapter(adapter);
+        dropdown.setOnItemSelectedListener(this);
+
+        Spinner dropdownLimpeza = findViewById(R.id.spinnerLimpeza);
+        String[] itemsLimpeza = new String[]{"BOM", "RUIM", "ÓTIMO"};
+        ArrayAdapter<String> adapterLimpeza = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_dropdown_item, itemsLimpeza);
         dropdown.setAdapter(adapter);
         dropdown.setOnItemSelectedListener(this);
 
@@ -50,13 +61,40 @@ public class CadastrarBebedouroActivity extends AppCompatActivity implements Ada
             @Override
             public void onCheckedChanged(RadioGroup group, int checkedId) {
                 conferirRadio(checkedId);
+                checked=checkedId;
             }
         });
+
+
+        BoxStore boxStore = ObjectBox.get();
+
+        //animal box está funcionando para receber o animal da classe
+        Box<BebedouroCircular> circularBox = boxStore.boxFor(BebedouroCircular.class);
+        Box<BebedouroRetangular> retangularBox = boxStore.boxFor(BebedouroRetangular.class);
 
         Button salvar= (Button) findViewById(R.id.btSalvar);
         salvar.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-               
+             // int opcao = conferirRadio(checked);
+              if ( findViewById(R.id.txtRaio).getVisibility()==v.VISIBLE){
+                  //BEBEDOURO CIRCULAR
+                  String[] items = new String[]{"BOM", "RUIM", "ÓTIMO"};
+
+                  EditText raio = (EditText) findViewById(R.id.edtRaio);
+                  EditText vazao = (EditText) findViewById(R.id.edtVazao);
+                  BebedouroCircular bebedouroCircular = new BebedouroCircular(raio.getText().toString(),vazao.getText().toString());
+
+                  EditText altura = (EditText) findViewById(R.id.edtAltura);
+                  Spinner condicaoAcesso = findViewById(R.id.spinner1);
+                  Spinner limpeza = findViewById(R.id.spinnerLimpeza);
+
+                  Bebedouro bebedouro = new Bebedouro(Float.parseFloat(altura.getText().toString()), items[condicaoAcesso.getId()], items[limpeza.getId()]);
+                  bebedouroCircular.bebedouroToOne.setTarget(bebedouro);
+                  circularBox.put(bebedouroCircular);
+              }
+              else if (findViewById(R.id.txtRaio).getVisibility()==v.GONE) {
+                  //BEBEDOURO RETANGULAR
+              }
             }
         });
 
@@ -81,6 +119,7 @@ public class CadastrarBebedouroActivity extends AppCompatActivity implements Ada
 
             findViewById(R.id.edtLargura).setVisibility(View.GONE);
             findViewById(R.id.txtLargura).setVisibility(View.GONE);
+
 
         }
         else if(checkedId==R.id.rbRetangular)
