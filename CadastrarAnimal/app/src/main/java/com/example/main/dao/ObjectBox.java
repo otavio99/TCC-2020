@@ -2,7 +2,7 @@ package com.example.main.dao;
 
 import android.content.Context;
 
-
+import com.example.MyObjectBox;
 import io.objectbox.BoxStore;
 
 public class ObjectBox {

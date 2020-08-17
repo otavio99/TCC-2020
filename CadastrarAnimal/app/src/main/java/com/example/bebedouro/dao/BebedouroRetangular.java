@@ -11,6 +11,7 @@ public class BebedouroRetangular {
     public long id;
     public float comprimento;
     public float largura;
+
     public ToOne<Bebedouro> bebedouroToOne;
 
     public BebedouroRetangular(float comprimento, float largura) {
@@ -48,5 +49,9 @@ public class BebedouroRetangular {
 
     public void setBebedouroToOne(ToOne<Bebedouro> bebedouroToOne) {
         this.bebedouroToOne = bebedouroToOne;
+    }
+    @Override
+    public String toString(){
+        return "comprimento: " + this.comprimento+", largura: "+ this.largura;
     }
 }

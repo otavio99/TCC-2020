@@ -1,28 +1,24 @@
 package com.example.main;
 
 import android.content.Intent;
-import android.database.Cursor;
+import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
-import android.widget.Button;
-import android.widget.EditText;
 import android.widget.ListView;
 
-import com.example.animal.activity.ListarAnimaisActivity;
 import com.example.fazenda.activity.CadastrarFazendaActivity;
 import com.example.fazenda.activity.MostrarFazendaActivity;
-import com.example.fazenda.dao.ListarFazendas;
+import com.example.fazenda.dao.Fazenda;
 import com.example.main.dao.ObjectBox;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import static android.provider.AlarmClock.EXTRA_MESSAGE;
+import io.objectbox.Box;
+import io.objectbox.BoxStore;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -33,38 +29,27 @@ public class MainActivity extends AppCompatActivity {
 
         ObjectBox.init(this);
 
-        //Condição para mudar a tela, caso não haja conteúdo cadastrado na lista
-        //vai abrir o cadastrar se não vai para a tela do listar.
+        BoxStore boxStore = ObjectBox.get();
+
+        Box<Fazenda> fazendaBox = boxStore.boxFor(Fazenda.class);
+
+        List<Fazenda> fazendasLista = fazendaBox.getAll();
+
         Intent intent = new Intent(this, CadastrarFazendaActivity.class);
-        if (new ListarFazendas().listar(this).getCount() <= 0) {
+        if (fazendasLista.size()  <= 0) {
 
             startActivity(intent);
 
         }
 
-        //criando uma lista para ser utilizada mais pra frente para adicionar os objetos do tipo animal
         List<String> resultados = new ArrayList();
 
-        //cursor sendo criado para auxiliar ao percorrer a lista de animais
-        Cursor cursor =  new ListarFazendas().listar(this);
-
-        //aqui percorremos o conteúdo de cursor, que no caso possui a consulta retornada pelo listar
-        while (cursor.moveToNext()) {
-            // atribuindo para as variáveis os parametros correpondentes para serem adicionados na lista resultad
-            String nome = cursor.getString(cursor.getColumnIndex("nome"));
-            resultados.add( "Nome: "+ nome);
-        }
-
-        //instanciando uma listView para ser conectada a lista da activity main
         ListView listaView = (ListView) findViewById(R.id.lista);
         listaView.setOnItemClickListener(this::onItemClick);
 
-        //adapter necessário para passar a forma de que será adionado o conteúdo como a seguir, em simple_list_item_1
-        //possui dados de um  text view e também é passado a lista de resultados que possui os objetos cadastrados
-        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, resultados );
-        // listView setando o adapter que será demonstrado na tela
+        ArrayAdapter<Fazenda> adapter = new ArrayAdapter<Fazenda>(this, android.R.layout.simple_list_item_1, fazendasLista );
+
         listaView.setAdapter(adapter);
-        cursor.close();
 
         FloatingActionButton cadastrar= (FloatingActionButton) findViewById(R.id.btCadastrar);
         cadastrar.setOnClickListener(new View.OnClickListener() {

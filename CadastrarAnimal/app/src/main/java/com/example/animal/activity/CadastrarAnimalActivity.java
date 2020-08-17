@@ -39,7 +39,7 @@ public class CadastrarAnimalActivity extends AppCompatActivity {
                 EditText quantidadeedt = (EditText) findViewById(R.id.edtRaio);
 
                 Animal animal = new Animal(nomeedt.getText().toString(), Integer.parseInt(quantidadeedt.getText().toString()));
-               //animalbox está sendo usado como objeto de inserção
+                //animalbox está sendo usado como objeto de inserção
                 animalBox.put(animal);
 
             }

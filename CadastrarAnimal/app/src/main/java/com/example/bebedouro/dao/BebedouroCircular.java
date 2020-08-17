@@ -49,4 +49,8 @@ public class BebedouroCircular {
     public void setBebedouroToOne(ToOne<Bebedouro> bebedouroToOne) {
         this.bebedouroToOne = bebedouroToOne;
     }
+    @Override
+    public String toString(){
+        return "raio: " + this.raio+", vazão: "+ this.vazao;
+    }
 }

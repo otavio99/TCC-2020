@@ -16,8 +16,6 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name="com.example.animal.activity.CadastrarAnimalActivity">
-        </activity>
         <activity android:name="com.example.bebedouro.activity.CadastrarBebedouroActivity">
         </activity>
         <activity android:name="com.example.fazenda.activity.CadastrarFazendaActivity">
@@ -25,6 +23,8 @@
         <activity android:name="com.example.animal.activity.ListarAnimaisActivity">
         </activity>
         <activity android:name="com.example.fazenda.activity.MostrarFazendaActivity">
+        </activity>
+        <activity android:name="com.example.animal.activity.CadastrarAnimalActivity">
         </activity>
     </application>
 

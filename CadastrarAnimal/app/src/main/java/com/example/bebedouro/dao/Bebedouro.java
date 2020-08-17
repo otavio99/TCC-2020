@@ -1,5 +1,7 @@
 package com.example.bebedouro.dao;
 
+import com.example.fazenda.dao.Fazenda;
+
 import io.objectbox.annotation.Backlink;
 import io.objectbox.annotation.Entity;
 import io.objectbox.annotation.Id;
@@ -14,10 +16,13 @@ public class Bebedouro {
     public float altura;
     public String condicaoAcesso;
     public String limpeza;
-    @Backlink(to = "bebedouro")
-    public ToMany<BebedouroRetangular> bebedouroRetangularToMany;
-    @Backlink(to = "bebedouro")
+
+    public ToOne<Fazenda> fazendaToOne;
+
+    @Backlink(to = "bebedouroToOne")
     public ToMany<BebedouroCircular> bebedouroCircularToMany;
+    @Backlink(to = "bebedouroToOne")
+    public ToMany<BebedouroRetangular> bebedouroRetangularToMany;
 
     public Bebedouro(float altura, String condicaoAcesso, String limpeza) {
         this.altura = altura;
@@ -57,20 +62,17 @@ public class Bebedouro {
         this.limpeza = limpeza;
     }
 
-    public ToMany<BebedouroRetangular> getBebedouroRetangularToMany() {
-        return bebedouroRetangularToMany;
+    public ToOne<Fazenda> getFazendaToOne() {
+        return fazendaToOne;
     }
 
-    public void setBebedouroRetangularToMany(ToMany<BebedouroRetangular> bebedouroRetangularToMany) {
-        this.bebedouroRetangularToMany = bebedouroRetangularToMany;
+    public void setFazendaToOne(ToOne<Fazenda> fazendaToOne) {
+        this.fazendaToOne = fazendaToOne;
     }
 
-    public ToMany<BebedouroCircular> getBebedouroCircularToMany() {
-        return bebedouroCircularToMany;
-    }
-
-    public void setBebedouroCircularToMany(ToMany<BebedouroCircular> bebedouroCircularToMany) {
-        this.bebedouroCircularToMany = bebedouroCircularToMany;
+    @Override
+    public String toString(){
+        return "altura: " + this.altura+"condição de acesso: " + this.condicaoAcesso+"limpeza: "+this.limpeza;
     }
 }
 
