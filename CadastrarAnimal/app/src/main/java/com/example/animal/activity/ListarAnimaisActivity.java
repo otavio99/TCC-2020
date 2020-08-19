@@ -11,6 +11,7 @@ import android.widget.ListView;
 
 import com.example.animal.dao.Animal;
 import com.example.bebedouro.activity.CadastrarBebedouroActivity;
+import com.example.fazenda.dao.Fazenda;
 import com.example.main.R;
 import com.example.main.dao.ObjectBox;
 
@@ -28,15 +29,18 @@ public class ListarAnimaisActivity extends AppCompatActivity {
 
         BoxStore  boxStore = ObjectBox.get();
 
-        Box<Animal> animalBox = boxStore.boxFor(Animal.class);
+        Box<Fazenda> fazendaBox = boxStore.boxFor(Fazenda.class);
 
-        List<Animal> animaisLista = animalBox.getAll();
+        long  id=  getIntent().getExtras().getLong("id");
+        Fazenda fazenda= fazendaBox.get(id);
+        List<Animal>animaisLista= fazenda.animais;
 
         //Condição para mudar a tela, caso não haja conteúdo cadastrado na lista
         //vai abrir o cadastrar se não vai para a tela do listar.
         Intent intent = new Intent(this, CadastrarAnimalActivity.class);
-        if (animaisLista.size() <= 0) {
 
+        if (animaisLista.size() <= 0) {
+            intent.putExtra("id", id);
             startActivity(intent);
 
         }

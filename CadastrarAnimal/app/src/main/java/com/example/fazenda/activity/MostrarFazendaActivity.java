@@ -7,6 +7,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 
+import com.example.animal.activity.ListarAnimaisActivity;
 import com.example.bebedouro.activity.ListarBebedouroActivity;
 import com.example.main.R;
 
@@ -20,13 +21,14 @@ public class MostrarFazendaActivity extends AppCompatActivity {
 
         String nome="";
 
-
+        long id=  getIntent().getExtras().getLong("id");
         Button btcaminho= (Button) findViewById(R.id.btAnimal);
         Context contexto = getApplicationContext();
         btcaminho.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 Intent intent = new Intent();
-                intent.putExtra("id", 0);
+                intent.setClass(contexto, ListarAnimaisActivity.class);
+                intent.putExtra("id", id);
                 startActivity(intent);
             }
         });
@@ -36,7 +38,7 @@ public class MostrarFazendaActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Intent intent = new Intent();
                 intent.setClass(contexto, ListarBebedouroActivity.class);
-                intent.putExtra("id", 0);
+                intent.putExtra("id", id);
                 startActivity(intent);
             }
         });

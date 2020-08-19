@@ -22,8 +22,6 @@ public class CadastrarFazendaActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.cadastrar_fazenda);
 
-        String nome="";
-
         BoxStore boxStore = ObjectBox.get();
 
         Box<Fazenda> fazendaBox = boxStore.boxFor(Fazenda.class);

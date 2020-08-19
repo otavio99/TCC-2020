@@ -8,7 +8,7 @@ import android.widget.Button;
 import android.widget.EditText;
 
 import com.example.animal.dao.Animal;
-import com.example.main.MainActivity;
+import com.example.fazenda.dao.Fazenda;
 import com.example.main.R;
 import com.example.main.dao.ObjectBox;
 
@@ -28,9 +28,9 @@ public class CadastrarAnimalActivity extends AppCompatActivity {
 
         BoxStore  boxStore = ObjectBox.get();
 
-        //animal box está funcionando para receber o animal da classe
-        Box<Animal> animalBox = boxStore.boxFor(Animal.class);
-
+        long  id=  getIntent().getExtras().getLong("id");
+        Box<Fazenda> fazendaBox = boxStore.boxFor(Fazenda.class);
+        Fazenda fazenda = fazendaBox.get(id);
 
         Button salvar= (Button) findViewById(R.id.btSalvar);
         salvar.setOnClickListener(new View.OnClickListener() {
@@ -39,13 +39,16 @@ public class CadastrarAnimalActivity extends AppCompatActivity {
                 EditText quantidadeedt = (EditText) findViewById(R.id.edtRaio);
 
                 Animal animal = new Animal(nomeedt.getText().toString(), Integer.parseInt(quantidadeedt.getText().toString()));
-                //animalbox está sendo usado como objeto de inserção
-                animalBox.put(animal);
+                fazendaBox.attach(fazenda);
+                fazenda.animais.add(animal);
+                fazendaBox.put(fazenda);
+
 
             }
         });
 
-        Intent intent = new Intent(this, MainActivity.class);
+        Intent intent = new Intent(this, ListarAnimaisActivity.class);
+        intent.putExtra("id",id);
         Button voltar= (Button) findViewById(R.id.btVoltar);
         voltar.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {

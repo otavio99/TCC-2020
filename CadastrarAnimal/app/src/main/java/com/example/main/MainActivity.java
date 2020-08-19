@@ -21,7 +21,7 @@ import io.objectbox.Box;
 import io.objectbox.BoxStore;
 
 public class MainActivity extends AppCompatActivity {
-
+    private   List<Fazenda> fazendasLista;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -33,7 +33,7 @@ public class MainActivity extends AppCompatActivity {
 
         Box<Fazenda> fazendaBox = boxStore.boxFor(Fazenda.class);
 
-        List<Fazenda> fazendasLista = fazendaBox.getAll();
+        fazendasLista = fazendaBox.getAll();
 
         Intent intent = new Intent(this, CadastrarFazendaActivity.class);
         if (fazendasLista.size()  <= 0) {
@@ -66,7 +66,11 @@ public class MainActivity extends AppCompatActivity {
         intent.setClass(this, MostrarFazendaActivity.class);
         intent.putExtra("position", position);
         // Or / And
-        intent.putExtra("id", id);
+
+        int idInt= Integer.parseInt(Long.toString(id));
+
+        Fazenda fazenda= fazendasLista.get(idInt);
+        intent.putExtra("id", fazenda.id);
         startActivity(intent);
     }
 
