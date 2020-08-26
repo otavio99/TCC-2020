@@ -1,18 +1,34 @@
 package com.example.main.dao;
 
-import android.content.Context;
+import android.app.Application;
 
 import com.example.MyObjectBox;
+
 import io.objectbox.BoxStore;
 
-public class ObjectBox {
-    private static BoxStore boxStore;
+public class ObjectBox extends Application {
 
-    public static void init(Context context) {
-        boxStore = MyObjectBox.builder()
-                .androidContext(context.getApplicationContext())
-                .build();
+    private static ObjectBox obj;
+    private static BoxStore mBoxStore;
+
+    @Override
+
+    public void onCreate() {
+
+        super.onCreate();
+
+        obj = this;
+        mBoxStore = MyObjectBox.builder().androidContext(ObjectBox.this).build();
+
     }
 
-    public static BoxStore get() { return boxStore; }
+    public static ObjectBox getApp(){
+        return obj;
+    }
+
+    public static BoxStore get() {
+
+        return mBoxStore;
+
+    }
 }

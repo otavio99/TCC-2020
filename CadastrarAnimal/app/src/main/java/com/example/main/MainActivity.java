@@ -27,9 +27,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        ObjectBox.init(this);
-
-        BoxStore boxStore = ObjectBox.get();
+        BoxStore boxStore = ObjectBox.getApp().get();
 
         Box<Fazenda> fazendaBox = boxStore.boxFor(Fazenda.class);
 

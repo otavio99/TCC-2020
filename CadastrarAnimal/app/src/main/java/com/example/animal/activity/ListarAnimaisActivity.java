@@ -8,13 +8,14 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
+import android.widget.Toast;
 
-import com.example.animal.dao.Animal;
 import com.example.bebedouro.activity.CadastrarBebedouroActivity;
 import com.example.fazenda.dao.Fazenda;
 import com.example.main.R;
 import com.example.main.dao.ObjectBox;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import io.objectbox.Box;
@@ -32,14 +33,21 @@ public class ListarAnimaisActivity extends AppCompatActivity {
         Box<Fazenda> fazendaBox = boxStore.boxFor(Fazenda.class);
 
         long  id=  getIntent().getExtras().getLong("id");
-        Fazenda fazenda= fazendaBox.get(id);
-        List<Animal>animaisLista= fazenda.animais;
+        int duracao = Toast.LENGTH_SHORT;
+        Toast toast = Toast.makeText(getApplicationContext(),"id: "+ id,duracao);
+        toast.show();
+
+        List<Fazenda> fazendas = fazendaBox.getAll();
+        //Fazenda fazenda= fazendaBox.get(id);
+
+        //fazenda.animais.reset();
+        //List<Animal>animaisLista= fazenda.animais;
 
         //Condição para mudar a tela, caso não haja conteúdo cadastrado na lista
         //vai abrir o cadastrar se não vai para a tela do listar.
         Intent intent = new Intent(this, CadastrarAnimalActivity.class);
 
-        if (animaisLista.size() <= 0) {
+        if (0 <= 0) {
             intent.putExtra("id", id);
             startActivity(intent);
 
@@ -51,7 +59,7 @@ public class ListarAnimaisActivity extends AppCompatActivity {
 
         //adapter necessário para passar a forma de que será adionado o conteúdo como a seguir, em simple_list_item_1
         //possui dados de um  text view e também é passado a lista de resultados que possui os objetos cadastrados
-        ArrayAdapter<Animal> adapter = new ArrayAdapter<Animal>(this, android.R.layout.simple_list_item_1, animaisLista );
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, new ArrayList() );
         // listView setando o adapter que será demonstrado na tela
         listaView.setAdapter(adapter);
 

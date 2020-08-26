@@ -6,6 +6,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import com.example.animal.dao.Animal;
 import com.example.fazenda.dao.Fazenda;
@@ -31,17 +32,23 @@ public class CadastrarAnimalActivity extends AppCompatActivity {
         long  id=  getIntent().getExtras().getLong("id");
         Box<Fazenda> fazendaBox = boxStore.boxFor(Fazenda.class);
         Fazenda fazenda = fazendaBox.get(id);
-
-        Button salvar= (Button) findViewById(R.id.btSalvar);
+        int duracao = Toast.LENGTH_SHORT;
+        Toast toast = Toast.makeText(getApplicationContext(),"id: "+ id,duracao);
+        toast.show();
+       Button salvar= (Button) findViewById(R.id.btSalvar);
         salvar.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 EditText nomeedt = (EditText) findViewById(R.id.edtAnimal);
                 EditText quantidadeedt = (EditText) findViewById(R.id.edtRaio);
 
                 Animal animal = new Animal(nomeedt.getText().toString(), Integer.parseInt(quantidadeedt.getText().toString()));
-                fazendaBox.attach(fazenda);
                 fazenda.animais.add(animal);
-                fazendaBox.put(fazenda);
+                long id_fazenda= fazendaBox.put(fazenda);
+
+                int duracao = Toast.LENGTH_LONG;
+
+                Toast toast = Toast.makeText(getApplicationContext(),"id: "+ id_fazenda,duracao);
+                toast.show();
 
 
             }
