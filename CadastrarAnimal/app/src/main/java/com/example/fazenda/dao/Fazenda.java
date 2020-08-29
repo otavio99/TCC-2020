@@ -24,6 +24,14 @@ public class Fazenda {
 
     }
 
+    public long getId() {
+        return id;
+    }
+
+    public void setId(long id) {
+        this.id = id;
+    }
+
     public String getNome() {
         return nome;
     }
@@ -32,7 +40,13 @@ public class Fazenda {
         this.nome = nome;
     }
 
+    public ToMany<Animal> getAnimais() {
+        return animais;
+    }
 
+    public void setAnimais(ToMany<Animal> animais) {
+        this.animais = animais;
+    }
 
     @Override
     public String toString(){

@@ -10,17 +10,14 @@ import android.widget.EditText;
 import android.widget.RadioGroup;
 import android.widget.Spinner;
 
-import com.example.animal.dao.Animal;
 import com.example.bebedouro.dao.Bebedouro;
 import com.example.bebedouro.dao.BebedouroCircular;
 import com.example.bebedouro.dao.BebedouroRetangular;
 import com.example.main.R;
-import com.example.main.dao.ObjectBox;
+import com.example.main.ObjectBox;
 
 import io.objectbox.Box;
 import io.objectbox.BoxStore;
-import io.objectbox.relation.RelationInfo;
-import io.objectbox.relation.ToOne;
 
 public class CadastrarBebedouroActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener{
      private int checked;

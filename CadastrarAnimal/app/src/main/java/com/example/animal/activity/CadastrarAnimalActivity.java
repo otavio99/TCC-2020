@@ -11,7 +11,7 @@ import android.widget.Toast;
 import com.example.animal.dao.Animal;
 import com.example.fazenda.dao.Fazenda;
 import com.example.main.R;
-import com.example.main.dao.ObjectBox;
+import com.example.main.ObjectBox;
 
 import io.objectbox.Box;
 import io.objectbox.BoxStore;
@@ -31,7 +31,7 @@ public class CadastrarAnimalActivity extends AppCompatActivity {
 
         long  id=  getIntent().getExtras().getLong("id");
         Box<Fazenda> fazendaBox = boxStore.boxFor(Fazenda.class);
-        Fazenda fazenda = fazendaBox.get(id);
+        Box<Animal> animalBox = boxStore.boxFor(Animal.class);
         int duracao = Toast.LENGTH_SHORT;
         Toast toast = Toast.makeText(getApplicationContext(),"id: "+ id,duracao);
         toast.show();
@@ -41,16 +41,14 @@ public class CadastrarAnimalActivity extends AppCompatActivity {
                 EditText nomeedt = (EditText) findViewById(R.id.edtAnimal);
                 EditText quantidadeedt = (EditText) findViewById(R.id.edtRaio);
 
+                Fazenda fazenda = fazendaBox.get(id);
                 Animal animal = new Animal(nomeedt.getText().toString(), Integer.parseInt(quantidadeedt.getText().toString()));
+                animal.fazendaToOne.setTarget(fazenda);
+                animalBox.put(animal);
+
+                fazenda.animais.reset();
                 fazenda.animais.add(animal);
-                long id_fazenda= fazendaBox.put(fazenda);
-
-                int duracao = Toast.LENGTH_LONG;
-
-                Toast toast = Toast.makeText(getApplicationContext(),"id: "+ id_fazenda,duracao);
-                toast.show();
-
-
+                fazendaBox.put(fazenda);
             }
         });
 

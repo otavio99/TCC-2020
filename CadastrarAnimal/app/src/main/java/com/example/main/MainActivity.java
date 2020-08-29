@@ -12,13 +12,11 @@ import android.widget.ListView;
 import com.example.fazenda.activity.CadastrarFazendaActivity;
 import com.example.fazenda.activity.MostrarFazendaActivity;
 import com.example.fazenda.dao.Fazenda;
-import com.example.main.dao.ObjectBox;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import io.objectbox.Box;
-import io.objectbox.BoxStore;
 
 public class MainActivity extends AppCompatActivity {
     private   List<Fazenda> fazendasLista;
@@ -27,9 +25,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        BoxStore boxStore = ObjectBox.getApp().get();
-
-        Box<Fazenda> fazendaBox = boxStore.boxFor(Fazenda.class);
+        Box<Fazenda> fazendaBox = ObjectBox.get().boxFor(Fazenda.class);
 
         fazendasLista = fazendaBox.getAll();
 

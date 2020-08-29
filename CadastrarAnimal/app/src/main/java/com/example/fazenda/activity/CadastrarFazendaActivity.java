@@ -8,11 +8,10 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import com.example.animal.dao.Animal;
 import com.example.fazenda.dao.Fazenda;
 import com.example.main.MainActivity;
+import com.example.main.ObjectBox;
 import com.example.main.R;
-import com.example.main.dao.ObjectBox;
 
 import io.objectbox.Box;
 import io.objectbox.BoxStore;
@@ -34,7 +33,6 @@ public class CadastrarFazendaActivity extends AppCompatActivity {
                 EditText nomeedt = (EditText) findViewById(R.id.edtFazenda);
 
                 Fazenda fazenda = new Fazenda(nomeedt.getText().toString());
-                fazenda.animais.add(new Animal());
                 long id = fazendaBox.put(fazenda);
                 int duracao = Toast.LENGTH_SHORT;
                 Toast toast = Toast.makeText(getApplicationContext(),"id: "+ id,duracao);
