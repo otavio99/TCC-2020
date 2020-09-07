@@ -46,6 +46,8 @@ public class CadastrarFazendaActivity extends AppCompatActivity {
             public void onClick(View v) {
                 startActivity(intent);
             }
+
+
         });
 
     }

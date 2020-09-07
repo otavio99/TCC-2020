@@ -57,6 +57,10 @@ public class MainActivity extends AppCompatActivity {
         intent.setClass(this, MostrarFazendaActivity.class);
         intent.putExtra("id", id);
         // Or / And
+        //sem essas tres linhas esta dando o erro do id
+        //int idInt= Integer.parseInt(Long.toString(id));
+
+       // Fazenda fazenda= fazendasLista.get(idInt);
         startActivity(intent);
     }
 
