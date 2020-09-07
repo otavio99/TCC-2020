@@ -13,7 +13,6 @@ import com.example.fazenda.activity.CadastrarFazendaActivity;
 import com.example.fazenda.activity.MostrarFazendaActivity;
 import com.example.fazenda.dao.Fazenda;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import io.objectbox.Box;
@@ -36,8 +35,6 @@ public class MainActivity extends AppCompatActivity {
 
         }
 
-        List<String> resultados = new ArrayList();
-
         ListView listaView = (ListView) findViewById(R.id.lista);
         listaView.setOnItemClickListener(this::onItemClick);
 
@@ -58,26 +55,11 @@ public class MainActivity extends AppCompatActivity {
     public void onItemClick(AdapterView<?> l, View v, int position, long id) {
         Intent intent = new Intent();
         intent.setClass(this, MostrarFazendaActivity.class);
-        intent.putExtra("position", position);
+        intent.putExtra("id", id);
         // Or / And
-
-        int idInt= Integer.parseInt(Long.toString(id));
-
-        Fazenda fazenda= fazendasLista.get(idInt);
-        intent.putExtra("id", fazenda.id);
         startActivity(intent);
     }
 
-
-
-
-
-
-    //TODO: PESQUISAR ORM VS SQLITE PURO
-
-
-    //TODO: FAZER O JOIN DE BEBEDOURO COM BEBEDOURO RETANGULAR/CIRCULAR
-    //TODO: SITUAÇÃO DE HERANÇA NO CÓDIGO JAVA RELACIONADO A BEBEDOURO E ESPECIALIDADES
 
 
     // TODO: FAZER FUNCIONAR O CADASTRAR DO BEBEDOURO E LISTAR
