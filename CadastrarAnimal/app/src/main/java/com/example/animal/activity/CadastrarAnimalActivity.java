@@ -20,51 +20,55 @@ public class CadastrarAnimalActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        //inicializar a tela
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.cadastrar_animal);
-        String nome="";
-        int quantidade=0;
-
-
-        BoxStore  boxStore = ObjectBox.get();
-
-        long  id=  getIntent().getExtras().getLong("id");
-        Box<Fazenda> fazendaBox = boxStore.boxFor(Fazenda.class);
-        Box<Animal> animalBox = boxStore.boxFor(Animal.class);
-        int duracao = Toast.LENGTH_SHORT;
-        Toast toast = Toast.makeText(getApplicationContext(),"id: "+ id,duracao);
-        toast.show();
-       Button salvar= (Button) findViewById(R.id.btSalvar);
-        salvar.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
-                EditText nomeedt = (EditText) findViewById(R.id.edtAnimal);
-                EditText quantidadeedt = (EditText) findViewById(R.id.edtRaio);
-
-                Fazenda fazenda = fazendaBox.get(id);
-                Animal animal = new Animal(nomeedt.getText().toString(), Integer.parseInt(quantidadeedt.getText().toString()));
-                animal.fazendaToOne.setTarget(fazenda);
-                animalBox.put(animal);
-
-                fazenda.animais.reset();
-                fazenda.animais.add(animal);
-                fazendaBox.put(fazenda);
-            }
-        });
-
         Intent intent = new Intent(this, ListarAnimaisActivity.class);
-        intent.putExtra("id",id);
-        Button voltar= (Button) findViewById(R.id.btVoltar);
-        voltar.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
-                startActivity(intent);
-            }
-        });
+
+            //inicializar a tela
+            super.onCreate(savedInstanceState);
+            setContentView(R.layout.cadastrar_animal);
+            String nome = "";
+            int quantidade = 0;
 
 
+            BoxStore boxStore = ObjectBox.get();
+
+            long id = getIntent().getExtras().getLong("id");
+            Box<Fazenda> fazendaBox = boxStore.boxFor(Fazenda.class);
+            Box<Animal> animalBox = boxStore.boxFor(Animal.class);
+            int duracao = Toast.LENGTH_SHORT;
+            Toast toast = Toast.makeText(getApplicationContext(), "id: " + id, duracao);
+            toast.show();
+            Button salvar = (Button) findViewById(R.id.btSalvar);
+            salvar.setOnClickListener(new View.OnClickListener() {
+                public void onClick(View v) {
+                    try {
+                            EditText nomeedt = (EditText) findViewById(R.id.edtAnimal);
+                            EditText quantidadeedt = (EditText) findViewById(R.id.edtRaio);
+
+                            Fazenda fazenda = fazendaBox.get(Fazenda.getId_temp());
+                            Animal animal = new Animal(nomeedt.getText().toString(), Integer.parseInt(quantidadeedt.getText().toString()));
+                            animal.fazendaToOne.setTarget(fazenda);
+                            animalBox.put(animal);
 
 
+                            fazenda.animais.reset();
+                            fazenda.animais.add(animal);
+                            fazendaBox.put(fazenda);
+                            startActivity(intent);
+                    }
+                    catch (Exception e){
+                        startActivity(intent);
+                    }
+                }
+            });
 
+
+            intent.putExtra("id", id);
+            Button voltar = (Button) findViewById(R.id.btVoltar);
+            voltar.setOnClickListener(new View.OnClickListener() {
+                public void onClick(View v) {
+                    startActivity(intent);
+                }
+            });
 
     }
 

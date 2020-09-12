@@ -18,10 +18,19 @@ public class Fazenda {
     public ToMany<Animal> animais;
     @Backlink(to = "fazendaToOne")
     public ToMany<Bebedouro> bebedouros;
+    private static long id_temp;
 
     public Fazenda(String nome) {
         this.nome = nome;
 
+    }
+
+    public static long getId_temp() {
+        return id_temp;
+    }
+
+    public static void setId_temp(long id_temp) {
+        Fazenda.id_temp = id_temp;
     }
 
     public long getId() {

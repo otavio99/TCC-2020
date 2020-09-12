@@ -8,6 +8,7 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import com.example.fazenda.activity.CadastrarFazendaActivity;
 import com.example.fazenda.activity.MostrarFazendaActivity;
@@ -55,7 +56,11 @@ public class MainActivity extends AppCompatActivity {
     public void onItemClick(AdapterView<?> l, View v, int position, long id) {
         Intent intent = new Intent();
         intent.setClass(this, MostrarFazendaActivity.class);
-        intent.putExtra("id", id);
+        intent.putExtra("id", fazendasLista.get(position).getId());
+        Fazenda.setId_temp( fazendasLista.get(position).getId());
+        int duracao = Toast.LENGTH_SHORT;
+        Toast toast = Toast.makeText(getApplicationContext(),"main  temp id: "+  fazendasLista.get(position).getId(),duracao);
+        toast.show();
         // Or / And
         //sem essas tres linhas esta dando o erro do id
         //int idInt= Integer.parseInt(Long.toString(id));
@@ -65,15 +70,23 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
-
+    //DIVERSAS ANOTAÇÕES
     // TODO: FAZER FUNCIONAR O CADASTRAR DO BEBEDOURO E LISTAR
     //TODO: RELACIONAMENTO DOS ANIMAIS E DOS BEBEDOUROS COM A FAZENDA
         //TODO: Mandar um dado para a proxima janela
 
     //TODO: CALCULAR A DISPONIBILIDADE DE ÁGUA DOS BEBEDOUROS
     //TODO: BEBEDOURO NÃO ESTÁ LISTANDO, CONFERIR!
-    //TODO: PLANÍCIE E PLANALTO ACTIVITY MAIN
+
     //TODO: CALCULAR A NECESSIDADE TOTAL DE ÁGUA PARA OS ANIMAIS
+
+    //usabilidade
+    //TODO: REVISAR SE ESTÁ INTUITIVO PARA O USUÁRIO
+    //TODO: O QUE INCOMODA SÃO OS TIPOS DE VOLTAR QUE SURGEM E NAO SAO INTUITIVOS;
+    //TODO: AS CORES TAMBÉM ESTÃO MEIO APAGADAS NAO COMBINAM
+
+    //PRÓXIMO
+    //TODO: PLANÍCIE E PLANALTO ACTIVITY MAIN
 
 }
 
