@@ -4,6 +4,9 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
+import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -25,22 +28,19 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        Toolbar toolbar= findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+
         Box<Fazenda> fazendaBox = ObjectBox.get().boxFor(Fazenda.class);
-
         fazendasLista = fazendaBox.getAll();
-
         Intent intent = new Intent(this, CadastrarFazendaActivity.class);
         if (fazendasLista.size()  <= 0) {
-
             startActivity(intent);
-
         }
 
         ListView listaView = (ListView) findViewById(R.id.lista);
         listaView.setOnItemClickListener(this::onItemClick);
-
         ArrayAdapter<Fazenda> adapter = new ArrayAdapter<Fazenda>(this, android.R.layout.simple_list_item_1, fazendasLista );
-
         listaView.setAdapter(adapter);
 
         FloatingActionButton cadastrar= (FloatingActionButton) findViewById(R.id.btCadastrar);
@@ -52,6 +52,12 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.example_menu, menu);
+        return true;
+    }
 
     public void onItemClick(AdapterView<?> l, View v, int position, long id) {
         Intent intent = new Intent();
