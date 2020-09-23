@@ -17,16 +17,17 @@
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+
         </activity>
-        <activity android:name="com.example.bebedouro.activity.CadastrarBebedouroActivity">
+        <activity android:name="com.example.bebedouro.activity.CadastrarBebedouroActivity" android:parentActivityName="com.example.main.MainActivity">
         </activity>
-        <activity android:name="com.example.fazenda.activity.CadastrarFazendaActivity">
+        <activity android:name="com.example.fazenda.activity.CadastrarFazendaActivity" android:parentActivityName="com.example.main.MainActivity">
         </activity>
-        <activity android:name="com.example.animal.activity.ListarAnimaisActivity">
+        <activity android:name="com.example.animal.activity.ListarAnimaisActivity" android:parentActivityName="com.example.main.MainActivity">
         </activity>
-        <activity android:name="com.example.fazenda.activity.MostrarFazendaActivity">
+        <activity android:name="com.example.fazenda.activity.MostrarFazendaActivity" android:parentActivityName="com.example.main.MainActivity">
         </activity>
-        <activity android:name="com.example.animal.activity.CadastrarAnimalActivity">
+        <activity android:name="com.example.animal.activity.CadastrarAnimalActivity" android:parentActivityName="com.example.main.MainActivity">
         </activity>
     </application>
 
