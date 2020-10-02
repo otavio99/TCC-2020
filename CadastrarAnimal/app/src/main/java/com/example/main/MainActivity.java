@@ -59,8 +59,8 @@ public class MainActivity extends AppCompatActivity {
         // Get a support ActionBar corresponding to this toolbar
         ActionBar ab = getSupportActionBar();
 
-        // Enable the Up button
-        ab.setDisplayHomeAsUpEnabled(true);
+        // oculta a seta da primeira tela
+        ab.setDisplayHomeAsUpEnabled(false);
     }
 
     @Override

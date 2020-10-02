@@ -70,12 +70,7 @@
                 android:layout_height="wrap_content"
                 android:text="SALVAR" />
 
-            <Button
-                android:id="@+id/btVoltar"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
 
-                android:text="VOLTAR" />
 
 
 

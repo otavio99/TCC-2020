@@ -64,13 +64,7 @@ public class CadastrarAnimalActivity extends AppCompatActivity {
             });
 
 
-            intent.putExtra("id", id);
-            Button voltar = (Button) findViewById(R.id.btVoltar);
-            voltar.setOnClickListener(new View.OnClickListener() {
-                public void onClick(View v) {
-                    startActivity(intent);
-                }
-            });
+
 
         // my_child_toolbar is defined in the layout file
         Toolbar myChildToolbar =

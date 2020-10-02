@@ -4,43 +4,44 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="horizontal"
     tools:context="com.example.fazenda.activity.MostrarFazendaActivity">
-    <include
-        android:id="@+id/toolbar"
-        layout="@layout/toolbar"/>
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:layout_gravity="center"
+        >
 
-        <TextView
-            android:id="@+id/txNome"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="TextView" />
+        <include
+            android:id="@+id/toolbar"
+            layout="@layout/toolbar" />
 
-        <TextView
-            android:id="@+id/txId"
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="TextView" />
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:layout_gravity="center"
+            android:layout_margin="70dp">
 
-        <Button
-            android:id="@+id/btAnimal"
-            android:layout_width="match_parent"
-            android:layout_height="63dp"
-            android:text="IR PARA ANIMAL" />
+            <Button
+                android:id="@+id/btAnimal"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="IR PARA ANIMAL" />
 
-        <Button
-            android:id="@+id/btBebedouro"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="IR PARA BEBEDOURO" />
-        <Button
-            android:id="@+id/btVoltar"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="VOLTAR" />
+            <Button
+                android:id="@+id/btBebedouro"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="IR PARA BEBEDOURO" />
+
+
+        </LinearLayout>
+
     </LinearLayout>
 
 </android.support.constraint.ConstraintLayout>
