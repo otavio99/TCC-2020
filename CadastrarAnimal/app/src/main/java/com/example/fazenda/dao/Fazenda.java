@@ -20,6 +20,9 @@ public class Fazenda {
     public ToMany<Bebedouro> bebedouros;
     private static long id_temp;
 
+    public Fazenda() {
+    }
+
     public Fazenda(String nome) {
         this.nome = nome;
 
