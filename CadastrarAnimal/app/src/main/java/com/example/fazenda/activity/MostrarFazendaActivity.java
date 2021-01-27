@@ -15,7 +15,7 @@ import com.example.main.MainActivity;
 import com.example.main.R;
 
 public class MostrarFazendaActivity extends AppCompatActivity {
-
+    private long id;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         Intent intent = new Intent(this, MainActivity.class);
@@ -25,7 +25,7 @@ public class MostrarFazendaActivity extends AppCompatActivity {
 
         String nome="";
 
-         long id=  getIntent().getExtras().getLong("id");
+        id=  getIntent().getExtras().getLong("id");
         Button btcaminho= (Button) findViewById(R.id.btAnimal);
         Context contexto = getApplicationContext();
         btcaminho.setOnClickListener(new View.OnClickListener() {

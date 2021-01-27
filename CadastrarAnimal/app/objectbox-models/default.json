@@ -4,31 +4,31 @@
   "_note3": "If you have VCS merge conflicts, you must resolve them according to ObjectBox docs.",
   "entities": [
     {
-      "id": "1:4748728487080806317",
-      "lastPropertyId": "4:8633053883154272077",
+      "id": "1:1403067984240239830",
+      "lastPropertyId": "4:612442237477434069",
       "name": "Animal",
       "properties": [
         {
-          "id": "1:1119926562739753004",
+          "id": "1:908394002164697370",
           "name": "id",
           "type": 6,
           "flags": 1
         },
         {
-          "id": "2:4503361252524819249",
+          "id": "2:9007747564611288826",
           "name": "nome",
           "type": 9
         },
         {
-          "id": "3:6655921840665115769",
+          "id": "3:2185366440018814834",
           "name": "quantidade",
           "type": 5,
           "flags": 4
         },
         {
-          "id": "4:8633053883154272077",
+          "id": "4:612442237477434069",
           "name": "fazendaToOneId",
-          "indexId": "3:4798316549066132328",
+          "indexId": "1:5603065792719526424",
           "type": 11,
           "flags": 1548,
           "relationTarget": "Fazenda"
@@ -37,131 +37,131 @@
       "relations": []
     },
     {
-      "id": "2:4270705206339529558",
-      "lastPropertyId": "5:4413834169292361886",
-      "name": "Bebedouro",
-      "properties": [
-        {
-          "id": "1:2895692282965818729",
-          "name": "id",
-          "type": 6,
-          "flags": 1
-        },
-        {
-          "id": "2:5484039639670382221",
-          "name": "altura",
-          "type": 7,
-          "flags": 4
-        },
-        {
-          "id": "3:5491809687709971952",
-          "name": "condicaoAcesso",
-          "type": 9
-        },
-        {
-          "id": "4:8511739114226793692",
-          "name": "limpeza",
-          "type": 9
-        },
-        {
-          "id": "5:4413834169292361886",
-          "name": "fazendaToOneId",
-          "indexId": "4:4152295815470235691",
-          "type": 11,
-          "flags": 1548,
-          "relationTarget": "Fazenda"
-        }
-      ],
-      "relations": []
-    },
-    {
-      "id": "3:3565643902603071182",
-      "lastPropertyId": "4:1495295549221200554",
-      "name": "BebedouroCircular",
-      "properties": [
-        {
-          "id": "1:203978247355689142",
-          "name": "id",
-          "type": 6,
-          "flags": 1
-        },
-        {
-          "id": "2:3340111191574004478",
-          "name": "raio",
-          "type": 9
-        },
-        {
-          "id": "3:576201580934597037",
-          "name": "vazao",
-          "type": 9
-        },
-        {
-          "id": "4:1495295549221200554",
-          "name": "bebedouroToOneId",
-          "indexId": "1:6726496896800377051",
-          "type": 11,
-          "flags": 1548,
-          "relationTarget": "Bebedouro"
-        }
-      ],
-      "relations": []
-    },
-    {
-      "id": "4:7205393060545689993",
-      "lastPropertyId": "4:4394139456796218152",
-      "name": "BebedouroRetangular",
-      "properties": [
-        {
-          "id": "1:1026741713013424814",
-          "name": "id",
-          "type": 6,
-          "flags": 1
-        },
-        {
-          "id": "2:2169992763297958853",
-          "name": "comprimento",
-          "type": 7,
-          "flags": 4
-        },
-        {
-          "id": "3:7170130721237039162",
-          "name": "largura",
-          "type": 7,
-          "flags": 4
-        },
-        {
-          "id": "4:4394139456796218152",
-          "name": "bebedouroToOneId",
-          "indexId": "2:7985178469818024388",
-          "type": 11,
-          "flags": 1548,
-          "relationTarget": "Bebedouro"
-        }
-      ],
-      "relations": []
-    },
-    {
-      "id": "5:5015182753383530707",
-      "lastPropertyId": "2:3282381495716957852",
+      "id": "2:8239865202070254336",
+      "lastPropertyId": "2:4463825040528411215",
       "name": "Fazenda",
       "properties": [
         {
-          "id": "1:1362881478532689859",
+          "id": "1:5181554244146522400",
           "name": "id",
           "type": 6,
           "flags": 1
         },
         {
-          "id": "2:3282381495716957852",
+          "id": "2:4463825040528411215",
           "name": "nome",
           "type": 9
         }
       ],
       "relations": []
+    },
+    {
+      "id": "3:3787542515896293895",
+      "lastPropertyId": "4:5705854073304166275",
+      "name": "BebedouroRetangular",
+      "properties": [
+        {
+          "id": "1:3598005607498015151",
+          "name": "id",
+          "type": 6,
+          "flags": 1
+        },
+        {
+          "id": "2:2320130726960042364",
+          "name": "comprimento",
+          "type": 7,
+          "flags": 4
+        },
+        {
+          "id": "3:2530174163329269701",
+          "name": "largura",
+          "type": 7,
+          "flags": 4
+        },
+        {
+          "id": "4:5705854073304166275",
+          "name": "bebedouroToOneId",
+          "indexId": "2:165289471672367730",
+          "type": 11,
+          "flags": 1548,
+          "relationTarget": "Bebedouro"
+        }
+      ],
+      "relations": []
+    },
+    {
+      "id": "4:615479567362436673",
+      "lastPropertyId": "5:2473664676510499848",
+      "name": "Bebedouro",
+      "properties": [
+        {
+          "id": "1:1837018972783209682",
+          "name": "id",
+          "type": 6,
+          "flags": 1
+        },
+        {
+          "id": "2:6781102271943353697",
+          "name": "altura",
+          "type": 7,
+          "flags": 4
+        },
+        {
+          "id": "3:2133895267752147235",
+          "name": "condicaoAcesso",
+          "type": 9
+        },
+        {
+          "id": "4:7442069030680401301",
+          "name": "limpeza",
+          "type": 9
+        },
+        {
+          "id": "5:2473664676510499848",
+          "name": "fazendaToOneId",
+          "indexId": "3:4518883406886965645",
+          "type": 11,
+          "flags": 1548,
+          "relationTarget": "Fazenda"
+        }
+      ],
+      "relations": []
+    },
+    {
+      "id": "5:6861098472952458299",
+      "lastPropertyId": "4:6743171484942509320",
+      "name": "BebedouroCircular",
+      "properties": [
+        {
+          "id": "1:2278810253238428587",
+          "name": "id",
+          "type": 6,
+          "flags": 1
+        },
+        {
+          "id": "2:571439841498117037",
+          "name": "raio",
+          "type": 9
+        },
+        {
+          "id": "3:5786697061141448632",
+          "name": "vazao",
+          "type": 9
+        },
+        {
+          "id": "4:6743171484942509320",
+          "name": "bebedouroToOneId",
+          "indexId": "4:5762654965748032195",
+          "type": 11,
+          "flags": 1548,
+          "relationTarget": "Bebedouro"
+        }
+      ],
+      "relations": []
     }
   ],
-  "lastEntityId": "5:5015182753383530707",
-  "lastIndexId": "4:4152295815470235691",
+  "lastEntityId": "5:6861098472952458299",
+  "lastIndexId": "4:5762654965748032195",
   "lastRelationId": "0:0",
   "lastSequenceId": "0:0",
   "modelVersion": 5,

@@ -43,7 +43,7 @@ public class ListarAnimaisActivity extends AppCompatActivity {
         toast.show();
 
         List<Animal> animais = animalBox.getAll();
-        animais.removeIf( obj -> obj.fazendaToOne.getTargetId() != Fazenda.getId_temp());
+        //animais.removeIf( obj -> obj.fazendaToOne.getTargetId() != Fazenda.getId_temp());
 
         //Condição para mudar a tela, caso não haja conteúdo cadastrado na lista
         //vai abrir o cadastrar se não vai para a tela do listar.

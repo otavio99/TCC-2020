@@ -24,6 +24,7 @@ public class Fazenda {
         this.nome = nome;
 
     }
+    public Fazenda() {}
 
     public static long getId_temp() {
         return id_temp;
