@@ -5,11 +5,12 @@ import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.RequiresApi;
 import android.support.design.widget.FloatingActionButton;
+import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
-import android.widget.Button;
 import android.widget.ListView;
 import android.widget.Toast;
 
@@ -31,6 +32,18 @@ public class ListarAnimaisActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.listar_animal);
+        Toolbar toolbar= findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+
+        Toolbar myChildToolbar =
+                (Toolbar) findViewById(R.id.toolbar);
+        setSupportActionBar(myChildToolbar);
+
+        // Get a support ActionBar corresponding to this toolbar
+        ActionBar ab = getSupportActionBar();
+
+        // oculta a seta da primeira tela
+        ab.setDisplayHomeAsUpEnabled(true);
 
         BoxStore  boxStore = ObjectBox.get();
 
@@ -73,12 +86,6 @@ public class ListarAnimaisActivity extends AppCompatActivity {
 
         Intent intent2 = new Intent(this, MainActivity.class);
         intent.putExtra("id",id);
-        Button voltar= (Button) findViewById(R.id.btVoltar);
-        voltar.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
-                startActivity(intent2);
-            }
-        });
 
 
     }

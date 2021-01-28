@@ -4,20 +4,20 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     tools:context="com.example.animal.activity.CadastrarAnimalActivity">
     <include
         android:id="@+id/toolbar"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
         layout="@layout/toolbar"/>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical">
 
         <TextView
             android:id="@+id/txanimal"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@id/toolbar"
+            app:layout_constraintLeft_toLeftOf="parent"
             android:text="ANIMAL:" />
 
         <EditText
@@ -25,12 +25,16 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:ems="10"
+            app:layout_constraintTop_toBottomOf="@id/txanimal"
+            app:layout_constraintLeft_toLeftOf="parent"
             android:inputType="textPersonName" />
 
         <TextView
             android:id="@+id/txtComprimento"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@id/edtAnimal"
+            app:layout_constraintLeft_toLeftOf="parent"
             android:text="QUANTIDADE:" />
 
         <EditText
@@ -38,11 +42,16 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:ems="10"
+            app:layout_constraintTop_toBottomOf="@id/txtComprimento"
+            app:layout_constraintLeft_toLeftOf="parent"
             android:inputType="number" />
 
         <RadioGroup
+            android:id="@+id/rg"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@id/edtRaio"
+            app:layout_constraintLeft_toLeftOf="parent">
 
             <RadioButton
                 android:id="@+id/rbCircular"
@@ -59,22 +68,14 @@
                 android:text="PLANALTO" />
         </RadioGroup>
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="horizontal">
 
             <Button
                 android:id="@+id/btSalvar"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                app:layout_constraintTop_toBottomOf="@id/rg"
+                app:layout_constraintLeft_toLeftOf="parent"
                 android:text="SALVAR" />
 
-
-
-
-
-        </LinearLayout>
-    </LinearLayout>
 
 </android.support.constraint.ConstraintLayout>
