@@ -6,6 +6,7 @@ import com.example.bebedouro.dao.Bebedouro;
 import io.objectbox.annotation.Backlink;
 import io.objectbox.annotation.Entity;
 import io.objectbox.annotation.Id;
+import io.objectbox.annotation.Transient;
 import io.objectbox.relation.ToMany;
 
 @Entity
@@ -18,7 +19,11 @@ public class Fazenda {
     public ToMany<Animal> animais;
     @Backlink(to = "fazendaToOne")
     public ToMany<Bebedouro> bebedouros;
+    @Transient
     private static long id_temp;
+
+    public Fazenda() {
+    }
 
     public Fazenda(String nome) {
         this.nome = nome;

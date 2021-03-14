@@ -11,6 +11,7 @@ import android.widget.Button;
 
 import com.example.animal.activity.ListarAnimaisActivity;
 import com.example.bebedouro.activity.ListarBebedouroActivity;
+import com.example.fazenda.dao.Fazenda;
 import com.example.main.MainActivity;
 import com.example.main.R;
 
@@ -24,15 +25,12 @@ public class MostrarFazendaActivity extends AppCompatActivity {
 
 
         String nome="";
-
-        id=  getIntent().getExtras().getLong("id");
+        id= Fazenda.getId_temp();
         Button btcaminho= (Button) findViewById(R.id.btAnimal);
-        Context contexto = getApplicationContext();
         btcaminho.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 Intent intent = new Intent();
-                intent.setClass(contexto, ListarAnimaisActivity.class);
-                intent.putExtra("id", id);
+                intent.setClass(v.getContext(), ListarAnimaisActivity.class);
                 startActivity(intent);
             }
         });
@@ -41,8 +39,7 @@ public class MostrarFazendaActivity extends AppCompatActivity {
         btcaminhoBebedouro.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 Intent intent = new Intent();
-                intent.setClass(contexto, ListarBebedouroActivity.class);
-                intent.putExtra("id", id);
+                intent.setClass(v.getContext(), ListarBebedouroActivity.class);
                 startActivity(intent);
             }
         });

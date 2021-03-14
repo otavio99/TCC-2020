@@ -9,14 +9,17 @@ public class BebedouroRetangular {
 
     @Id
     public long id;
-    public float comprimento;
-    public float largura;
+    public String comprimento;
+    public String largura;
 
     public ToOne<Bebedouro> bebedouroToOne;
 
-    public BebedouroRetangular(float comprimento, float largura) {
+    public BebedouroRetangular(String comprimento, String largura) {
         this.comprimento = comprimento;
         this.largura = largura;
+    }
+
+    public BebedouroRetangular() {
     }
 
     public long getId() {
@@ -27,19 +30,19 @@ public class BebedouroRetangular {
         this.id = id;
     }
 
-    public float getComprimento() {
+    public String getComprimento() {
         return comprimento;
     }
 
-    public void setComprimento(float comprimento) {
+    public void setComprimento(String comprimento) {
         this.comprimento = comprimento;
     }
 
-    public float getLargura() {
+    public String getLargura() {
         return largura;
     }
 
-    public void setLargura(float largura) {
+    public void setLargura(String largura) {
         this.largura = largura;
     }
 

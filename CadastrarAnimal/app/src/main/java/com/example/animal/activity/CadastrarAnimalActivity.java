@@ -33,12 +33,9 @@ public class CadastrarAnimalActivity extends AppCompatActivity {
 
             BoxStore boxStore = ObjectBox.get();
 
-            long id = getIntent().getExtras().getLong("id");
+            long id = Fazenda.getId_temp();
             Box<Fazenda> fazendaBox = boxStore.boxFor(Fazenda.class);
             Box<Animal> animalBox = boxStore.boxFor(Animal.class);
-            int duracao = Toast.LENGTH_SHORT;
-            Toast toast = Toast.makeText(getApplicationContext(), "id: " + id, duracao);
-            toast.show();
             Button salvar = (Button) findViewById(R.id.btSalvar);
             salvar.setOnClickListener(new View.OnClickListener() {
                 public void onClick(View v) {

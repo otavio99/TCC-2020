@@ -73,11 +73,7 @@ public class MainActivity extends AppCompatActivity {
     public void onItemClick(AdapterView<?> l, View v, int position, long id) {
         Intent intent = new Intent();
         intent.setClass(this, MostrarFazendaActivity.class);
-        intent.putExtra("id", fazendasLista.get(position).getId());
         Fazenda.setId_temp( fazendasLista.get(position).getId());
-        int duracao = Toast.LENGTH_SHORT;
-        Toast toast = Toast.makeText(getApplicationContext(),"main  temp id: "+  fazendasLista.get(position).getId(),duracao);
-        toast.show();
         // Or / And
         //sem essas tres linhas esta dando o erro do id
         //int idInt= Integer.parseInt(Long.toString(id));
