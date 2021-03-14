@@ -37,9 +37,8 @@ public class CadastrarFazendaActivity extends AppCompatActivity {
 
                 Fazenda fazenda = new Fazenda(nomeedt.getText().toString());
                  id = fazendaBox.put(fazenda);
-                int duracao = Toast.LENGTH_SHORT;
-                Toast toast = Toast.makeText(getApplicationContext(),"id: "+ id,duracao);
-                toast.show();
+                Intent intent = new Intent(v.getContext(), MainActivity.class);
+                startActivity(intent);
             }
         });
 
@@ -49,8 +48,6 @@ public class CadastrarFazendaActivity extends AppCompatActivity {
             public void onClick(View v) {
                 startActivity(intent);
             }
-
-
         });
 
 

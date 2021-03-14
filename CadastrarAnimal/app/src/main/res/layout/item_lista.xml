@@ -2,5 +2,5 @@
     android:layout_width="match_parent" android:layout_height="wrap_content"
     android:textSize="20sp"
     android:textColor="#000000"
-    android:id="@+id/simple_list_item_1"
+    android:id="@+id/item_simples"
     />

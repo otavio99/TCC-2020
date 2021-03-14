@@ -18,6 +18,9 @@ public class BebedouroCircular {
         this.vazao = vazao;
     }
 
+    public BebedouroCircular( ) {
+
+    }
     public long getId() {
         return id;
     }

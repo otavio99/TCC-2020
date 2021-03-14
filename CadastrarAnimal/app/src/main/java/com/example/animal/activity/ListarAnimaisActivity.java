@@ -16,10 +16,12 @@ import android.widget.Toast;
 
 import com.example.animal.dao.Animal;
 import com.example.bebedouro.activity.CadastrarBebedouroActivity;
+import com.example.fazenda.dao.Fazenda;
 import com.example.main.MainActivity;
 import com.example.main.ObjectBox;
 import com.example.main.R;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import io.objectbox.Box;
@@ -27,7 +29,6 @@ import io.objectbox.BoxStore;
 
 public class ListarAnimaisActivity extends AppCompatActivity {
 
-    @RequiresApi(api = Build.VERSION_CODES.N)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -49,21 +50,21 @@ public class ListarAnimaisActivity extends AppCompatActivity {
 
         Box<Animal> animalBox = boxStore.boxFor(Animal.class);
 
-        long  id=  getIntent().getExtras().getLong("id");
-        int duracao = Toast.LENGTH_SHORT;
-        Toast toast = Toast.makeText(getApplicationContext(),"id: "+ id,duracao);
-        toast.show();
+        long  id= Fazenda.getId_temp();
 
-        List<Animal> animais = animalBox.getAll();
-        //animais.removeIf( obj -> obj.fazendaToOne.getTargetId() != Fazenda.getId_temp());
+        ArrayList<Animal> animais = (ArrayList<Animal>) animalBox.getAll();
+        ArrayList<Animal> newList = new ArrayList<Animal>();
+        for (Animal obj : animais) {
+            if (obj.fazendaToOne.getTargetId() == Fazenda.getId_temp()){
+                newList.add(obj);
+            }
+        }
 
         //Condição para mudar a tela, caso não haja conteúdo cadastrado na lista
         //vai abrir o cadastrar se não vai para a tela do listar.
         Intent intent = new Intent(this, CadastrarAnimalActivity.class);
-        intent.putExtra("id", id);
         if (animais.size() <= 0) {
             startActivity(intent);
-
         }
 
         //instanciando uma listView para ser conectada a lista da activity main
@@ -72,7 +73,7 @@ public class ListarAnimaisActivity extends AppCompatActivity {
 
         //adapter necessário para passar a forma de que será adionado o conteúdo como a seguir, em simple_list_item_1
         //possui dados de um  text view e também é passado a lista de resultados que possui os objetos cadastrados
-        ArrayAdapter<Animal> adapter = new ArrayAdapter<Animal>(this, android.R.layout.simple_list_item_1, animais );
+        ArrayAdapter<Animal> adapter = new ArrayAdapter<Animal>(this, android.R.layout.simple_list_item_1, newList );
         // listView setando o adapter que será demonstrado na tela
         listaView.setAdapter(adapter);
 
@@ -85,8 +86,6 @@ public class ListarAnimaisActivity extends AppCompatActivity {
         });
 
         Intent intent2 = new Intent(this, MainActivity.class);
-        intent.putExtra("id",id);
-
 
     }
 
@@ -96,7 +95,6 @@ public class ListarAnimaisActivity extends AppCompatActivity {
         intent.setClass(this, CadastrarBebedouroActivity.class);
         intent.putExtra("position", position);
         // Or / And
-        intent.putExtra("id", id);
         startActivity(intent);
     }
 

@@ -19,17 +19,14 @@ public class Bebedouro {
 
     public ToOne<Fazenda> fazendaToOne;
 
-    @Backlink(to = "bebedouroToOne")
-    public ToMany<BebedouroCircular> bebedouroCircularToMany;
-    @Backlink(to = "bebedouroToOne")
-    public ToMany<BebedouroRetangular> bebedouroRetangularToMany;
-
     public Bebedouro(float altura, String condicaoAcesso, String limpeza) {
         this.altura = altura;
         this.condicaoAcesso = condicaoAcesso;
         this.limpeza = limpeza;
     }
+    public Bebedouro( ) {
 
+    }
     public long getId() {
         return id;
     }
@@ -72,7 +69,7 @@ public class Bebedouro {
 
     @Override
     public String toString(){
-        return "altura: " + this.altura+"condição de acesso: " + this.condicaoAcesso+"limpeza: "+this.limpeza;
+        return "altura: " + this.altura+"; condição de acesso: " + this.condicaoAcesso+"; limpeza: "+this.limpeza;
     }
 }
 

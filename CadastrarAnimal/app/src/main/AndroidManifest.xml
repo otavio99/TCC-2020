@@ -25,6 +25,8 @@
         </activity>
         <activity android:name="com.example.animal.activity.ListarAnimaisActivity" android:parentActivityName="com.example.main.MainActivity">
         </activity>
+        <activity android:name="com.example.bebedouro.activity.ListarBebedouroActivity" android:parentActivityName="com.example.main.MainActivity">
+        </activity>
         <activity android:name="com.example.fazenda.activity.MostrarFazendaActivity" android:parentActivityName="com.example.main.MainActivity">
         </activity>
         <activity android:name="com.example.animal.activity.CadastrarAnimalActivity" android:parentActivityName="com.example.main.MainActivity">
