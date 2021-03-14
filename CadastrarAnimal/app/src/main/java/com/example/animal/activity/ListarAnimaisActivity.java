@@ -5,17 +5,17 @@ import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.RequiresApi;
 import android.support.design.widget.FloatingActionButton;
+import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
-import android.widget.Button;
 import android.widget.ListView;
 import android.widget.Toast;
 
 import com.example.animal.dao.Animal;
 import com.example.bebedouro.activity.CadastrarBebedouroActivity;
-import com.example.fazenda.dao.Fazenda;
 import com.example.main.MainActivity;
 import com.example.main.ObjectBox;
 import com.example.main.R;
@@ -32,6 +32,18 @@ public class ListarAnimaisActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.listar_animal);
+        Toolbar toolbar= findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+
+        Toolbar myChildToolbar =
+                (Toolbar) findViewById(R.id.toolbar);
+        setSupportActionBar(myChildToolbar);
+
+        // Get a support ActionBar corresponding to this toolbar
+        ActionBar ab = getSupportActionBar();
+
+        // oculta a seta da primeira tela
+        ab.setDisplayHomeAsUpEnabled(true);
 
         BoxStore  boxStore = ObjectBox.get();
 
@@ -43,7 +55,7 @@ public class ListarAnimaisActivity extends AppCompatActivity {
         toast.show();
 
         List<Animal> animais = animalBox.getAll();
-        animais.removeIf( obj -> obj.fazendaToOne.getTargetId() != Fazenda.getId_temp());
+        //animais.removeIf( obj -> obj.fazendaToOne.getTargetId() != Fazenda.getId_temp());
 
         //Condição para mudar a tela, caso não haja conteúdo cadastrado na lista
         //vai abrir o cadastrar se não vai para a tela do listar.
@@ -74,12 +86,6 @@ public class ListarAnimaisActivity extends AppCompatActivity {
 
         Intent intent2 = new Intent(this, MainActivity.class);
         intent.putExtra("id",id);
-        Button voltar= (Button) findViewById(R.id.btVoltar);
-        voltar.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
-                startActivity(intent2);
-            }
-        });
 
 
     }

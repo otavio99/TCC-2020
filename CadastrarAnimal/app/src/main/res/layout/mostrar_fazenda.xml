@@ -7,29 +7,21 @@
     android:orientation="horizontal"
     tools:context="com.example.fazenda.activity.MostrarFazendaActivity">
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical"
-        android:layout_gravity="center"
-        >
 
         <include
             android:id="@+id/toolbar"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
             layout="@layout/toolbar" />
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="vertical"
-            android:layout_gravity="center"
-            android:layout_margin="70dp">
 
             <Button
                 android:id="@+id/btAnimal"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
+                app:layout_constraintTop_toBottomOf="@id/toolbar"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
                 android:text="IR PARA ANIMAL" />
 
             <Button
@@ -37,11 +29,14 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
+                app:layout_constraintTop_toBottomOf="@id/btAnimal"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
                 android:text="IR PARA BEBEDOURO" />
 
 
-        </LinearLayout>
 
-    </LinearLayout>
+
+
 
 </android.support.constraint.ConstraintLayout>
