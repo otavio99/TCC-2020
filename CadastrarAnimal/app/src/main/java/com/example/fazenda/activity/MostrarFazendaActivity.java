@@ -25,7 +25,6 @@ public class MostrarFazendaActivity extends AppCompatActivity {
 
 
         String nome="";
-
         id= Fazenda.getId_temp();
         Button btcaminho= (Button) findViewById(R.id.btAnimal);
         btcaminho.setOnClickListener(new View.OnClickListener() {
