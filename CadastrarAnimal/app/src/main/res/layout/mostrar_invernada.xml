@@ -5,7 +5,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="horizontal"
-    tools:context="com.tcc.fazenda.activity.MostrarFazendaActivity">
+    tools:context="com.tcc.invernada.activity.MostrarInvernadaActivity">
+
 
         <include
             android:id="@+id/toolbar"
@@ -14,13 +15,28 @@
             layout="@layout/toolbar" />
 
             <Button
-                android:id="@+id/btInvernada"
+                android:id="@+id/btAnimal"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 app:layout_constraintTop_toBottomOf="@id/toolbar"
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintRight_toRightOf="parent"
-                android:text="LISTAR INVERNADAS" />
+                android:text="IR PARA ANIMAL" />
+
+            <Button
+                android:id="@+id/btBebedouro"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                app:layout_constraintTop_toBottomOf="@id/btAnimal"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                android:text="IR PARA BEBEDOURO" />
+
+
+
+
+
 
 </android.support.constraint.ConstraintLayout>

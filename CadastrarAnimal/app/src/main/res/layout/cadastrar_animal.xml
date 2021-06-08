@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context="com.example.animal.activity.CadastrarAnimalActivity">
+    tools:context="com.tcc.animal.activity.CadastrarAnimalActivity">
     <include
         android:id="@+id/toolbar"
         app:layout_constraintTop_toTopOf="parent"

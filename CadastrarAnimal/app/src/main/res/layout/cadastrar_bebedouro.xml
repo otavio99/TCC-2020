@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context="com.example.bebedouro.activity.CadastrarBebedouroActivity">
+    tools:context="com.tcc.bebedouro.activity.CadastrarBebedouroActivity">
     <include
         android:id="@+id/toolbar"
         app:layout_constraintTop_toTopOf="parent"
