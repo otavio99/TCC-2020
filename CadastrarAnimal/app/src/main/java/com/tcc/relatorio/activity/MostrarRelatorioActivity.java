@@ -35,40 +35,42 @@ public class MostrarRelatorioActivity extends AppCompatActivity {
         setContentView(R.layout.mostrar_relatorio);
         BoxStore boxStore = ObjectBox.get();
 
-        HashMap<String, ArrayList<Float>> tabela = new HashMap<String, ArrayList<Float>>();
+        HashMap<Integer, ArrayList<Float>> tabela = new HashMap<Integer, ArrayList<Float>>();
         ArrayList<Float> uas = new ArrayList<Float>();
 
         uas.add(0, (float) 0.8);
         uas.add(1, (float) 1);
-        tabela.put("VacasDeCria", uas);
+        tabela.put(0, uas);
 
         uas.add(0, (float) 1.2);
         uas.add(1, (float) 1);
-        tabela.put("Touro", uas);
+        tabela.put(1, uas);
 
         uas.add(0, (float) 0.6);
         uas.add(1, (float) 0.75);
-        tabela.put("Novilha2a3Anos", uas);
+        tabela.put(2, uas);
 
         uas.add(0, (float) 0.4);
         uas.add(1, (float) 0.5);
-        tabela.put("Novilha1a2Anos", uas);
+        tabela.put(3, uas);
 
         uas.add(0, (float) 0.2);
         uas.add(1, (float) 0.25);
-        tabela.put("Bezerras", uas);
+        tabela.put(4, uas);
 
         uas.add(0, (float) 0.6);
         uas.add(1, (float) 0.75);
-        tabela.put("Garrote2a3anos", uas);
+        tabela.put(5, uas);
 
         uas.add(0, (float) 0.4);
         uas.add(1, (float) 0.5);
-        tabela.put("Garrote1a2anos", uas);
+        tabela.put(6, uas);
 
         uas.add(0, (float) 0.3);
         uas.add(1, (float) 0.25);
-        tabela.put("Bezerros", uas);
+        tabela.put(7, uas);
+
+        String[] tiposRebanho = new String[]{"Vacas de cria", "Touro", "Novilha de 2 a 3 anos", "Novilhas de 1 a 2 anos", "Bezerras", "Garrote de 2 a 3 anos", "Garrote de 1 a 2 anos", "Bezerros"};
 
         final TextView dispay= (TextView) findViewById(R.id.txtDisplay);
 
@@ -76,11 +78,37 @@ public class MostrarRelatorioActivity extends AppCompatActivity {
         Fazenda fazenda = boxStore.boxFor(Fazenda.class).get(fazendaId);
 
         // TODO: 1 - Calcular o requerimento de água do rebanho de cada invernada
-        ArrayList<Float> totalPorInvernada = new ArrayList<Float>();
+        ArrayList<Float> listaRequerimento = new ArrayList<Float>();
         for (Invernada invernada : fazenda.invernada) {
+
+            Float uaTotal = (float) 0;
+
             for (Animal animal : invernada.animais) {
-                animal.getQuantidade();
+                int index = 0;
+                ArrayList<Float> ua = new ArrayList<Float>();
+
+                for ( String item: tiposRebanho ) {
+                    if (animal.tipo.equals(item)) {
+                        ua = tabela.get(index);
+                    }
+                    index+=1;
+                }
+                if (animal.relevo.equals("planicie")) {
+
+                    uaTotal += animal.getQuantidade() * ua.get(0);
+
+                } else if (animal.relevo.equals("planalto")) {
+
+                    uaTotal += animal.getQuantidade()  * ua.get(1);
+
+                }
             }
+
+            //calculo
+            Float requerimento = (40 * uaTotal) / 1000;
+            listaRequerimento.add(requerimento);
+
+
         }
 
         // TODO: 2 - Calcular o número de bebedouros (artifical / natural) de cada invernada

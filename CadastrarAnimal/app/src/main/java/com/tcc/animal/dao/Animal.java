@@ -11,15 +11,17 @@ import io.objectbox.relation.ToOne;
 public class Animal {
     @Id
     public long id;
-    public String nome;
     public int quantidade;
     public String tipo;
+    public String relevo;
+
 
     public ToOne<Invernada> invernada;
 
-    public Animal( String nome, int quantidade) {
-        this.nome = nome;
+    public Animal(int quantidade, String tipo, String relevo) {
         this.quantidade = quantidade;
+        this.tipo = tipo;
+        this.relevo = relevo;
     }
 
     public Animal( ) {
@@ -32,14 +34,6 @@ public class Animal {
 
     public void setId(long id) {
         this.id = id;
-    }
-
-    public String getNome() {
-        return nome;
-    }
-
-    public void setNome(String nome) {
-        this.nome = nome;
     }
 
     public int getQuantidade() {
@@ -58,8 +52,16 @@ public class Animal {
         this.tipo = tipo;
     }
 
+    public String getRelevo() {
+        return relevo;
+    }
+
+    public void setRelevo(String relevo) {
+        this.relevo = relevo;
+    }
+
     @Override
     public String toString(){
-        return "Nome: " + this.nome + ", " + "Quantidade: " + this.quantidade + ".";
+        return "Tipo: " + this.tipo + ", " + "Quantidade: " + this.quantidade + ", " + this.relevo;
     }
 }

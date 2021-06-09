@@ -12,70 +12,71 @@
         app:layout_constraintLeft_toLeftOf="parent"
         layout="@layout/toolbar"/>
 
-        <TextView
-            android:id="@+id/txanimal"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:layout_constraintTop_toBottomOf="@id/toolbar"
-            app:layout_constraintLeft_toLeftOf="parent"
-            android:text="ANIMAL:" />
 
-        <EditText
-            android:id="@+id/edtAnimal"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:ems="10"
-            app:layout_constraintTop_toBottomOf="@id/txanimal"
-            app:layout_constraintLeft_toLeftOf="parent"
-            android:inputType="textPersonName" />
+    <TextView
+        android:id="@+id/txtComprimento"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/toolbar"
+        app:layout_constraintLeft_toLeftOf="parent"
+        android:text="QUANTIDADE:" />
 
-        <TextView
-            android:id="@+id/txtComprimento"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:layout_constraintTop_toBottomOf="@id/edtAnimal"
-            app:layout_constraintLeft_toLeftOf="parent"
-            android:text="QUANTIDADE:" />
+    <EditText
+        android:id="@+id/edtCompr"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        app:layout_constraintTop_toBottomOf="@id/txtComprimento"
+        app:layout_constraintLeft_toLeftOf="parent"
+        android:inputType="number" />
 
-        <EditText
-            android:id="@+id/edtRaio"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:ems="10"
-            app:layout_constraintTop_toBottomOf="@id/txtComprimento"
-            app:layout_constraintLeft_toLeftOf="parent"
-            android:inputType="number" />
+    <TextView
+        android:id="@+id/txanimal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/edtCompr"
+        app:layout_constraintLeft_toLeftOf="parent"
+        android:text="ANIMAL:" />
 
-        <RadioGroup
-            android:id="@+id/rg"
+    <Spinner
+        android:id="@+id/spinnerTipo"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@android:drawable/btn_dropdown"
+        app:layout_constraintTop_toBottomOf="@id/txanimal"
+        app:layout_constraintLeft_toLeftOf="parent"
+        android:spinnerMode="dropdown"/>
+
+    <RadioGroup
+        android:id="@+id/rg"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/spinnerTipo"
+        app:layout_constraintLeft_toLeftOf="parent">
+
+        <RadioButton
+            android:id="@+id/rbPlanicie"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            app:layout_constraintTop_toBottomOf="@id/edtRaio"
-            app:layout_constraintLeft_toLeftOf="parent">
+            android:layout_weight="1"
+            android:text="planicie" />
 
-            <RadioButton
-                android:id="@+id/rbCircular"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="PLANÍCIE" />
-
-            <RadioButton
-                android:id="@+id/rbRetangular"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="PLANALTO" />
-        </RadioGroup>
+        <RadioButton
+            android:id="@+id/rbPlanalto"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="planalto" />
+    </RadioGroup>
 
 
-            <Button
-                android:id="@+id/btSalvar"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                app:layout_constraintTop_toBottomOf="@id/rg"
-                app:layout_constraintLeft_toLeftOf="parent"
-                android:text="SALVAR" />
+    <Button
+        android:id="@+id/btSalvar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/rg"
+        app:layout_constraintLeft_toLeftOf="parent"
+        android:text="SALVAR" />
 
 
 </android.support.constraint.ConstraintLayout>

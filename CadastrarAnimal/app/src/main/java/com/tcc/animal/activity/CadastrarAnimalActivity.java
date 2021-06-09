@@ -6,8 +6,7 @@ import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
-import android.widget.Button;
-import android.widget.EditText;
+import android.widget.*;
 
 import com.tcc.animal.dao.Animal;
 import com.tcc.fazenda.dao.Fazenda;
@@ -18,7 +17,7 @@ import com.tcc.main.ObjectBox;
 import io.objectbox.Box;
 import io.objectbox.BoxStore;
 
-public class CadastrarAnimalActivity extends AppCompatActivity {
+public class CadastrarAnimalActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,19 +39,24 @@ public class CadastrarAnimalActivity extends AppCompatActivity {
             salvar.setOnClickListener(new View.OnClickListener() {
                 public void onClick(View v) {
                     try {
-                            EditText nomeedt = (EditText) findViewById(R.id.edtAnimal);
-                            EditText quantidadeedt = (EditText) findViewById(R.id.edtRaio);
+                            EditText quantidadeedt = (EditText) findViewById(R.id.edtCompr);
+                            Spinner spinner = (Spinner) findViewById(R.id.spinnerTipo);
+                            RadioGroup radiog = (RadioGroup) findViewById(R.id.rg);
+
+                            int checked=0;
+                            RadioButton choice = (RadioButton) findViewById(radiog.getCheckedRadioButtonId());
+
 
                             Invernada invernada = invernadaBox.get(Invernada.getId_temp());
-                            Animal animal = new Animal(nomeedt.getText().toString(), Integer.parseInt(quantidadeedt.getText().toString()));
+                            Animal animal = new Animal(Integer.parseInt(quantidadeedt.getText().toString()), spinner.getSelectedItem().toString(), (String) choice.getText());
                             animal.invernada.setTarget(invernada);
                             animalBox.put(animal);
-
 
                             invernada.animais.reset();
                             invernada.animais.add(animal);
                             invernadaBox.put(invernada);
                             startActivity(intent);
+
                     }
                     catch (Exception e){
                         startActivity(intent);
@@ -61,7 +65,11 @@ public class CadastrarAnimalActivity extends AppCompatActivity {
             });
 
 
-
+        Spinner spinner = findViewById(R.id.spinnerTipo);
+        String[] tiposRebanho = new String[]{"Vacas de cria", "Touro", "Novilha de 2 a 3 anos", "Novilhas de 1 a 2 anos", "Bezerras", "Garrote de 2 a 3 anos", "Garrote de 1 a 2 anos", "Bezerros"};
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_dropdown_item, tiposRebanho);
+        spinner.setAdapter(adapter);
+        spinner.setOnItemSelectedListener(this);
 
         // my_child_toolbar is defined in the layout file
         Toolbar myChildToolbar =
@@ -73,6 +81,16 @@ public class CadastrarAnimalActivity extends AppCompatActivity {
 
         // Enable the Up button
         ab.setDisplayHomeAsUpEnabled(true);
+
+    }
+
+    @Override
+    public void onItemSelected(AdapterView<?> parent, View v, int position, long id) {
+
+    }
+
+    @Override
+    public void onNothingSelected(AdapterView<?> parent) {
 
     }
 

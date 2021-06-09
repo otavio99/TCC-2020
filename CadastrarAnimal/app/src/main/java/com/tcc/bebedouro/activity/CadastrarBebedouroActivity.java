@@ -50,7 +50,7 @@ public class CadastrarBebedouroActivity extends AppCompatActivity implements Ada
         Spinner dropdownLimpeza = findViewById(R.id.spinnerLimpeza);
         String[] itemsLimpeza = new String[]{"BOM", "RUIM", "ÓTIMO"};
         ArrayAdapter<String> adapterLimpeza = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_dropdown_item, itemsLimpeza);
-        dropdownLimpeza.setAdapter(adapter);
+        dropdownLimpeza.setAdapter(adapterLimpeza);
         dropdownLimpeza.setOnItemSelectedListener(this);
 
         RadioGroup groupRadio= findViewById(R.id.groupRadio);
