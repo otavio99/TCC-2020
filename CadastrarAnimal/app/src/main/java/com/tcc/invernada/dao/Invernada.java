@@ -2,6 +2,8 @@ package com.tcc.invernada.dao;
 
 import com.tcc.animal.dao.Animal;
 import com.tcc.bebedouro.dao.Bebedouro;
+import com.tcc.bebedouro.dao.BebedouroCircular;
+import com.tcc.bebedouro.dao.BebedouroRetangular;
 import com.tcc.fazenda.dao.Fazenda;
 import io.objectbox.annotation.Backlink;
 import io.objectbox.annotation.Entity;
@@ -22,7 +24,10 @@ public class Invernada {
     public ToMany<Animal> animais;
 
     @Backlink(to = "invernada")
-    public ToMany<Bebedouro> bebedouros;
+    public ToMany<BebedouroCircular> bebedourosCir;
+
+    @Backlink(to = "invernada")
+    public ToMany<BebedouroRetangular> bebedourosRet;
 
     @Transient
     private static long id_temp;

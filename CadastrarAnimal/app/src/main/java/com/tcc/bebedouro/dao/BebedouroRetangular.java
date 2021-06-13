@@ -1,20 +1,20 @@
 package com.tcc.bebedouro.dao;
 
+import com.tcc.invernada.dao.Invernada;
 import io.objectbox.annotation.Entity;
 import io.objectbox.annotation.Id;
 import io.objectbox.relation.ToOne;
 
 @Entity
-public class BebedouroRetangular {
+public class BebedouroRetangular extends Bebedouro {
 
-    @Id
-    public long id;
     public String comprimento;
     public String largura;
+    public ToOne<Invernada> invernada;
 
-    public ToOne<Bebedouro> bebedouroToOne;
 
-    public BebedouroRetangular(String comprimento, String largura) {
+    public BebedouroRetangular(float altura, String condicaoAcesso, String limpeza, String comprimento, String largura) {
+        super(altura, condicaoAcesso, limpeza);
         this.comprimento = comprimento;
         this.largura = largura;
     }
@@ -46,13 +46,6 @@ public class BebedouroRetangular {
         this.largura = largura;
     }
 
-    public ToOne<Bebedouro> getBebedouroToOne() {
-        return bebedouroToOne;
-    }
-
-    public void setBebedouroToOne(ToOne<Bebedouro> bebedouroToOne) {
-        this.bebedouroToOne = bebedouroToOne;
-    }
     @Override
     public String toString(){
         return "comprimento: " + this.comprimento+", largura: "+ this.largura;

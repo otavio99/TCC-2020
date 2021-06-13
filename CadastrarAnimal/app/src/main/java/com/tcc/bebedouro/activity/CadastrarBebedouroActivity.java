@@ -80,39 +80,35 @@ public class CadastrarBebedouroActivity extends AppCompatActivity implements Ada
                   String[] items = {"BOM", "RUIM", "ÓTIMO"};
                   EditText raio = (EditText) findViewById(R.id.edtRaio);
                   EditText vazao = (EditText) findViewById(R.id.edtVazao);
-                  BebedouroCircular bebedouroCircular = new BebedouroCircular(raio.getText().toString(),vazao.getText().toString());
 
                   EditText altura = (EditText) findViewById(R.id.edtAltura);
                   Spinner condicaoAcesso = (Spinner) findViewById(R.id.spinner1);
                   Spinner limpeza = (Spinner) findViewById(R.id.spinnerLimpeza);
-                  Bebedouro bebedouro = new Bebedouro(Float.parseFloat(altura.getText().toString()), condicaoAcesso.getSelectedItem().toString(), limpeza.getSelectedItem().toString());
+
+                  BebedouroCircular bebedouroCircular = new BebedouroCircular(Float.parseFloat(altura.getText().toString()), condicaoAcesso.getSelectedItem().toString(), limpeza.getSelectedItem().toString(), raio.getText().toString(),vazao.getText().toString());
 
                   Invernada invernada = invernadaBox.get(Invernada.getId_temp());
-                  bebedouro.invernada.setTarget(invernada);
+                  bebedouroCircular.invernada.setTarget(invernada);
 
-                  bebedouroCircular.bebedouroToOne.setTarget(bebedouro);
                   circularBox.put(bebedouroCircular);
                   startActivity(intent);
 
               }
               else if (findViewById(R.id.txtRaio).getVisibility()==v.GONE) {
                   //BEBEDOURO RETANGULAR
-                  //BEBEDOURO CIRCULAR
                   String[] items = {"BOM", "RUIM", "ÓTIMO"};
 
                   EditText comprimento = (EditText) findViewById(R.id.edtComprimento);
                   EditText largura = (EditText) findViewById(R.id.edtLargura);
-                  BebedouroRetangular bebedouroRetangular = new BebedouroRetangular(comprimento.getText().toString(),largura.getText().toString());
 
                   EditText altura = (EditText) findViewById(R.id.edtAltura);
                   Spinner condicaoAcesso = (Spinner) findViewById(R.id.spinner1);
                   Spinner limpeza = (Spinner) findViewById(R.id.spinnerLimpeza);
 
-                  Bebedouro bebedouro = new Bebedouro(Float.parseFloat(altura.getText().toString()), condicaoAcesso.getSelectedItem().toString(), limpeza.getSelectedItem().toString());
-                  Invernada invernada = invernadaBox.get(Invernada.getId_temp());
-                  bebedouro.invernada.setTarget(invernada);
+                  BebedouroRetangular bebedouroRetangular = new BebedouroRetangular(Float.parseFloat(altura.getText().toString()), condicaoAcesso.getSelectedItem().toString(), limpeza.getSelectedItem().toString(), comprimento.getText().toString(),largura.getText().toString());
 
-                  bebedouroRetangular.bebedouroToOne.setTarget(bebedouro);
+                  Invernada invernada = invernadaBox.get(Invernada.getId_temp());
+                  bebedouroRetangular.invernada.setTarget(invernada);
                   retangularBox.put(bebedouroRetangular);
                   startActivity(intent);
               }

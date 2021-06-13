@@ -1,8 +1,5 @@
 package com.tcc.fazenda.dao;
 
-import com.tcc.animal.dao.Animal;
-import com.tcc.bebedouro.dao.Bebedouro;
-
 import com.tcc.invernada.dao.Invernada;
 import io.objectbox.annotation.Backlink;
 import io.objectbox.annotation.Entity;

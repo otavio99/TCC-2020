@@ -10,9 +10,6 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
-import com.tcc.animal.activity.CadastrarAnimalActivity;
-import com.tcc.animal.dao.Animal;
-import com.tcc.bebedouro.activity.CadastrarBebedouroActivity;
 import com.tcc.fazenda.dao.Fazenda;
 import com.tcc.invernada.dao.Invernada;
 import com.tcc.main.MainActivity;
@@ -22,7 +19,6 @@ import io.objectbox.Box;
 import io.objectbox.BoxStore;
 
 import java.util.ArrayList;
-import java.util.List;
 
 public class ListarInvernadaActivity extends AppCompatActivity {
     private ArrayList<Invernada> invernadas;

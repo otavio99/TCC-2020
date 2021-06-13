@@ -3,12 +3,13 @@ package com.tcc.bebedouro.dao;
 import com.tcc.fazenda.dao.Fazenda;
 
 import com.tcc.invernada.dao.Invernada;
+import io.objectbox.annotation.BaseEntity;
 import io.objectbox.annotation.Entity;
 import io.objectbox.annotation.Id;
 import io.objectbox.relation.ToOne;
 
-@Entity
-public class Bebedouro {
+@BaseEntity
+public abstract class Bebedouro {
 
     @Id
     public long id;
@@ -16,7 +17,6 @@ public class Bebedouro {
     public String condicaoAcesso;
     public String limpeza;
 
-    public ToOne<Invernada> invernada;
 
     public Bebedouro(float altura, String condicaoAcesso, String limpeza) {
         this.altura = altura;

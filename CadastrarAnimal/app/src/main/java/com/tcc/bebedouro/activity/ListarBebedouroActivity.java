@@ -12,6 +12,8 @@ import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
 import com.tcc.bebedouro.dao.Bebedouro;
+import com.tcc.bebedouro.dao.BebedouroCircular;
+import com.tcc.bebedouro.dao.BebedouroRetangular;
 import com.tcc.fazenda.dao.Fazenda;
 import com.tcc.invernada.dao.Invernada;
 import com.tcc.main.ObjectBox;
@@ -40,11 +42,19 @@ public class ListarBebedouroActivity extends AppCompatActivity {
         ab.setDisplayHomeAsUpEnabled(true);
 
         BoxStore boxStore = ObjectBox.get();
-        Box<Bebedouro> bebedouroBox = boxStore.boxFor(Bebedouro.class);
+        Box<BebedouroCircular> bebedouroCircularBox = boxStore.boxFor(BebedouroCircular.class);
+        Box<BebedouroRetangular> bebedouroRetangularBox = boxStore.boxFor(BebedouroRetangular.class);
 
-        ArrayList<Bebedouro> bebedouros = (ArrayList<Bebedouro>) bebedouroBox.getAll();
         ArrayList<Bebedouro> newList = new ArrayList<Bebedouro>();
-        for (Bebedouro obj : bebedouros) {
+        ArrayList<BebedouroCircular> bebedourosCir = (ArrayList<BebedouroCircular>) bebedouroCircularBox.getAll();
+        ArrayList<BebedouroRetangular> bebedourosRet = (ArrayList<BebedouroRetangular>) bebedouroRetangularBox.getAll();
+
+        for (BebedouroCircular obj : bebedourosCir) {
+            if (obj.invernada.getTargetId() == Invernada.getId_temp()){
+                newList.add(obj);
+            }
+        }
+        for (BebedouroRetangular obj : bebedourosRet) {
             if (obj.invernada.getTargetId() == Invernada.getId_temp()){
                 newList.add(obj);
             }
@@ -53,7 +63,7 @@ public class ListarBebedouroActivity extends AppCompatActivity {
         //Condição para mudar a tela, caso não haja conteúdo cadastrado na lista
         //vai abrir o cadastrar se não vai para a tela do listar.
         Intent intent = new Intent(this, CadastrarBebedouroActivity.class);
-        if (bebedouros.size() <= 0) {
+        if (newList.size() <= 0) {
             startActivity(intent);
         }
 

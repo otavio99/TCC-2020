@@ -13,7 +13,6 @@ import android.widget.ListView;
 
 import com.tcc.animal.dao.Animal;
 import com.tcc.bebedouro.activity.CadastrarBebedouroActivity;
-import com.tcc.fazenda.dao.Fazenda;
 import com.tcc.invernada.dao.Invernada;
 import com.tcc.main.MainActivity;
 import com.tcc.main.ObjectBox;

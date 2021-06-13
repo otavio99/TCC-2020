@@ -5,24 +5,20 @@ import android.os.Bundle;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.view.View;
-import android.widget.Button;
 import android.widget.TextView;
-import com.tcc.animal.activity.ListarAnimaisActivity;
 import com.tcc.animal.dao.Animal;
-import com.tcc.bebedouro.activity.ListarBebedouroActivity;
+import com.tcc.bebedouro.dao.Bebedouro;
+import com.tcc.bebedouro.dao.BebedouroCircular;
+import com.tcc.bebedouro.dao.BebedouroRetangular;
 import com.tcc.fazenda.dao.Fazenda;
 import com.tcc.invernada.dao.Invernada;
 import com.tcc.main.MainActivity;
 import com.tcc.main.ObjectBox;
 import com.tcc.main.R;
-import io.objectbox.Box;
 import io.objectbox.BoxStore;
 
 import java.util.ArrayList;
 
-import java.util.HashMap;
-import java.util.HashMap;
 import java.util.HashMap;
 
 
@@ -79,6 +75,7 @@ public class MostrarRelatorioActivity extends AppCompatActivity {
 
         // TODO: 1 - Calcular o requerimento de água do rebanho de cada invernada
         ArrayList<Float> listaRequerimento = new ArrayList<Float>();
+        Float requerimento = (float) 0;
         for (Invernada invernada : fazenda.invernada) {
 
             Float uaTotal = (float) 0;
@@ -105,23 +102,25 @@ public class MostrarRelatorioActivity extends AppCompatActivity {
             }
 
             //calculo
-            Float requerimento = (40 * uaTotal) / 1000;
-            listaRequerimento.add(requerimento);
-
+            requerimento = (40 * uaTotal) / 1000;
 
         }
 
         // TODO: 2 - Calcular o número de bebedouros (artifical / natural) de cada invernada
-        
+        for (Invernada invernada : fazenda.invernada) {
+            for (BebedouroCircular bebedouro : invernada.bebedourosCir){
+                dispay.setText("" + bebedouro.toString());
+            }
+            for (BebedouroRetangular bebedouro : invernada.bebedourosRet){
+                dispay.setText("" + bebedouro.toString());
+            }
+        }
+
+
+
         // TODO: 3 - Calcular o volume (V) da água disponível para:
             // TODO: 3.1 - Bebedouro circular
             // TODO: 3.2 - Bebedouro retangular
-
-
-
-
-
-        dispay.setText("" + tabela.get("VacasDeCria").get(0));
 
         // my_child_toolbar is defined in the layout file
         Toolbar myChildToolbar = (Toolbar) findViewById(R.id.toolbar);

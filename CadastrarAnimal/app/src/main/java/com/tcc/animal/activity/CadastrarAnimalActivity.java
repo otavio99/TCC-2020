@@ -9,7 +9,6 @@ import android.view.View;
 import android.widget.*;
 
 import com.tcc.animal.dao.Animal;
-import com.tcc.fazenda.dao.Fazenda;
 import com.tcc.invernada.dao.Invernada;
 import com.tcc.main.R;
 import com.tcc.main.ObjectBox;
